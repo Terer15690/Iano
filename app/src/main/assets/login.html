@@ -142,7 +142,7 @@
                 <h1 class="font-headline-md text-headline-md mb-2">Welcome Back</h1>
                 <p class="text-on-surface-variant font-body-md">Sign in to manage your premium events</p>
             </div>
-            <form class="space-y-6">
+            <form class="space-y-6" onsubmit="event.preventDefault(); Android.openLogin();">
                 <!-- Email Field -->
                 <div class="space-y-2">
                     <label class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant block ml-1" for="email">Email Address</label>
@@ -197,7 +197,7 @@
             </div>
             <!-- Create Account Prompt -->
             <div class="mt-10 text-center">
-                <p class="font-body-md text-on-surface-variant">New to FABI? <a class="text-primary font-semibold hover:underline ml-1" href="index.html">Create an account</a></p>
+                <p class="font-body-md text-on-surface-variant">New to FABI? <a class="text-primary font-semibold hover:underline ml-1" href="javascript:void(0)" onclick="Android.openRegister()">Create an account</a></p>
             </div>
         </div>
         <!-- Trust Footer -->

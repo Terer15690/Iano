@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "257485412392",
+    "firebase_url": "https://fabi-d72bc-default-rtdb.firebaseio.com",
+    "project_id": "fabi-d72bc",
+    "storage_bucket": "fabi-d72bc.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:257485412392:android:68204ca60936d6b1167d1d",
+        "android_client_info": {
+          "package_name": "com.example.fabibookingvendorsystem"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjv52vTZjTG3P7Hz3Leg5Zvs8zxP__vUA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

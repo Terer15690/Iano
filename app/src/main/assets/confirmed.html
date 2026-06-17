@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Booking Confirmed | EventMaster</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#c8c6c5",
+                        "tertiary": "#4d4f53",
+                        "on-primary-fixed-variant": "#5a00c6",
+                        "primary-fixed-dim": "#d2bbff",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#e2e2e7",
+                        "surface-container-highest": "#d3e4fe",
+                        "surface-container-lowest": "#ffffff",
+                        "background": "#f8f9ff",
+                        "surface-container-high": "#dce9ff",
+                        "on-secondary-fixed": "#1c1b1b",
+                        "tertiary-container": "#65676b",
+                        "secondary-fixed": "#e5e2e1",
+                        "on-primary-container": "#ede0ff",
+                        "primary-container": "#7c3aed",
+                        "on-tertiary-fixed": "#1a1c1f",
+                        "on-error": "#ffffff",
+                        "surface-container-low": "#eff4ff",
+                        "outline-variant": "#ccc3d8",
+                        "on-secondary-fixed-variant": "#474646",
+                        "on-secondary-container": "#656464",
+                        "surface": "#f8f9ff",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#c6c6cb",
+                        "inverse-surface": "#213145",
+                        "on-surface-variant": "#4a4455",
+                        "inverse-on-surface": "#eaf1ff",
+                        "secondary": "#5f5e5e",
+                        "primary": "#630ed4",
+                        "surface-bright": "#f8f9ff",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed": "#25005a",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-container": "#e6e6eb",
+                        "secondary-container": "#e5e2e1",
+                        "on-tertiary-fixed-variant": "#45474b",
+                        "inverse-primary": "#d2bbff",
+                        "surface-tint": "#732ee4",
+                        "error": "#ba1a1a",
+                        "primary-fixed": "#eaddff",
+                        "on-primary": "#ffffff",
+                        "on-background": "#0b1c30",
+                        "surface-dim": "#cbdbf5",
+                        "surface-container": "#e5eeff",
+                        "outline": "#7b7487",
+                        "surface-variant": "#d3e4fe",
+                        "on-surface": "#0b1c30"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "margin-mobile": "16px",
+                        "base": "8px",
+                        "margin-desktop": "64px",
+                        "gutter": "24px",
+                        "section-gap": "120px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "headline-md": ["Playfair Display"],
+                        "display-lg": ["Playfair Display"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "headline-sm": ["Playfair Display"],
+                        "label-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Playfair Display"],
+                        "headline-lg-mobile": ["Playfair Display"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                        "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "display-lg": ["56px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-sm": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "label-lg": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-lg": ["40px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #f8f9ff;
+            color: #0b1c30;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .glass-card {
+            backdrop-filter: blur(12px);
+            background: rgba(255, 255, 255, 0.7);
+        }
+        .animate-check {
+            animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+        }
+        @keyframes stroke {
+            100% { stroke-dashoffset: 0; }
+        }
+        .violet-gradient-btn {
+            background: linear-gradient(135deg, #7c3aed 0%, #630ed4 100%);
+            box-shadow: 0 4px 15px rgba(99, 14, 212, 0.2);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-on-background selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Top Navigation Suppression: Not rendered per the "Success/Confirmation" rule -->
+<main class="min-h-screen flex items-center justify-center px-margin-mobile md:px-margin-desktop py-12 relative overflow-hidden">
+<!-- Abstract Background Decorative Elements -->
+<div class="absolute top-0 right-0 -mr-32 -mt-32 w-96 h-96 bg-primary-container/10 rounded-full blur-[100px]"></div>
+<div class="absolute bottom-0 left-0 -ml-32 -mb-32 w-96 h-96 bg-surface-container-highest/30 rounded-full blur-[100px]"></div>
+<!-- Confirmation Container -->
+<div class="max-w-xl w-full z-10 text-center">
+<!-- Icon Section -->
+<div class="mb-8 flex justify-center">
+<div class="w-24 h-24 rounded-full bg-primary/10 flex items-center justify-center border border-primary/20 animate-bounce transition-all duration-1000">
+<span class="material-symbols-outlined text-primary text-6xl" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<!-- Typography Header -->
+<div class="space-y-4 mb-12">
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg tracking-tight text-on-surface">
+                    Booking Confirmed!
+                </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-md mx-auto">
+                    Your session with FABI has been secured. We've sent a confirmation email with all the event details.
+                </p>
+</div>
+<!-- Details Bento Card -->
+<div class="glass-card border border-outline-variant/30 rounded-xl p-8 mb-12 shadow-[0_32px_64px_rgba(0,0,0,0.04)] text-left">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-y-8 gap-x-12">
+<!-- Provider -->
+<div class="flex items-start gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden flex-shrink-0 bg-surface-container-high border border-outline-variant/20">
+<img alt="Photographer Portrait" class="w-full h-full object-cover" data-alt="A professional female photographer with a warm smile, wearing modern urban attire, standing against a softly blurred minimalist studio backdrop. The lighting is high-key and elegant, reflecting the sophisticated EventMaster brand aesthetic with clean whites and subtle charcoal tones. The portrait captures a sense of creative excellence and professional approachability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgbTslHeKC1A_KYzOUYUT7UAQbTVASyYPxj2i2O5QYYjqw03lr5HeV5Mqjuz6uIHE_Qqnh_1T2F2yQHIooj6uIWeLdM5F9rExdmZByamZrT1ISlZkqLGVkLZgxrl0lp5uv5N9jGCoYC2y6Vr6wqwUGJr6Vfmiv35eTx2wYCY_ML6nEeZPeoTEQ2CVsXKqxFAs_NPThfGr1zrg0G6Rh6_FPbRP3EbQr4r9KhwzJtbKWnOOheqUnFiyCADTorFglGwdRd45xaH8bPmM"/>
+</div>
+<div>
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-widest block mb-1">Photographer</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Elena Vancamp</h3>
+</div>
+</div>
+<!-- Date & Time -->
+<div class="flex flex-col">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-primary text-xl">calendar_today</span>
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-widest">Schedule</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Oct 24, 2023</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">14:00 PM — 17:00 PM (3h)</p>
+</div>
+<!-- Location -->
+<div class="flex flex-col md:col-span-2 pt-6 border-t border-outline-variant/20">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-primary text-xl">location_on</span>
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-widest">Location</span>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface">The Glass Pavilion, South District, Amsterdam</p>
+</div>
+</div>
+</div>
+<!-- Actions -->
+<div class="flex flex-col items-center gap-6">
+<button class="violet-gradient-btn w-full md:w-auto px-12 py-5 rounded-full text-on-primary font-label-lg text-label-lg hover:scale-[1.02] active:scale-95 transition-all duration-300">
+                    View My Bookings
+                </button>
+<a class="font-label-lg text-label-lg text-primary hover:text-primary-container transition-colors flex items-center gap-2 group" href="index.html">
+<span class="material-symbols-outlined text-lg group-hover:-translate-x-1 transition-transform">arrow_back</span>
+                    Back to Home
+                </a>
+</div>
+<!-- Atmospheric Footer -->
+<div class="mt-24 pt-12 border-t border-outline-variant/10">
+<p class="font-label-sm text-label-sm text-secondary uppercase tracking-widest opacity-50">
+                    Booking ID: EM-7729-014X
+                </p>
+</div>
+</div>
+</main>
+<!-- Navigation Suppressed: Transactional Screen Policy -->
+<script>
+        // Micro-interaction for the success icon scaling
+        document.addEventListener('DOMContentLoaded', () => {
+            const icon = document.querySelector('.animate-bounce');
+            if (icon) {
+                setTimeout(() => {
+                    icon.classList.remove('animate-bounce');
+                    icon.style.transform = 'scale(1.1)';
+                }, 1000);
+            }
+        });
+    </script>
+</body></html>
