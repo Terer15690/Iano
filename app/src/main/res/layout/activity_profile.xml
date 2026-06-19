@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="#FFFFFF">
+
+    <TextView
+        android:id="@+id/tvProfileGreeting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello, User"
+        android:textSize="28sp"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:layout_marginBottom="24dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your Recent Bookings"
+        android:textSize="18sp"
+        android:textColor="#0056b3"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp"
+        android:textAllCaps="true"
+        android:letterSpacing="0.05"/>
+
+    <TextView
+        android:id="@+id/tvBookingsList"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="No bookings yet."
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:background="@android:drawable/editbox_background"
+        android:padding="16dp"
+        android:layout_marginBottom="24dp"
+        android:lineSpacingExtra="4dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Transaction History"
+        android:textSize="18sp"
+        android:textColor="#0056b3"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp"
+        android:textAllCaps="true"
+        android:letterSpacing="0.05"/>
+
+    <TextView
+        android:id="@+id/tvTransactionsList"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="No transactions yet."
+        android:textColor="#000000"
+        android:textSize="16sp"
+        android:background="@android:drawable/editbox_background"
+        android:padding="16dp"
+        android:layout_marginBottom="24dp"
+        android:lineSpacingExtra="4dp"/>
+
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="Logout"
+        android:backgroundTint="#000000"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:elevation="4dp"/>
+
+</LinearLayout>

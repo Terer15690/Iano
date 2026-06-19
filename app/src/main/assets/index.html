@@ -3,6 +3,33 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title class="">FABI | Elite Event Services</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+<script>
+    function updateAuthUI(isLoggedIn) {
+        const exploreContainer = document.getElementById('exploreContainer');
+        const authPromptContainer = document.getElementById('authPromptContainer');
+        const navExplore = document.getElementById('navExplore');
+        const guestHeader = document.getElementById('guestHeaderActions');
+        const userHeader = document.getElementById('userHeaderActions');
+        const heroJoin = document.getElementById('heroJoinBtn');
+
+        if (isLoggedIn) {
+            exploreContainer.classList.remove('hidden');
+            authPromptContainer.classList.add('hidden');
+            navExplore.classList.remove('hidden');
+            guestHeader.classList.add('hidden');
+            userHeader.classList.remove('hidden');
+            heroJoin.classList.add('hidden');
+        } else {
+            exploreContainer.classList.add('hidden');
+            authPromptContainer.classList.remove('hidden');
+            navExplore.classList.add('hidden');
+            guestHeader.classList.remove('hidden');
+            userHeader.classList.add('hidden');
+            heroJoin.classList.remove('hidden');
+        }
+    }
+</script>
     <link href="https://fonts.googleapis.com" rel="preconnect">
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
@@ -46,53 +73,16 @@
             theme: {
                 extend: {
                     "colors": {
-                        "error-container": "#ffdad6",
-                        "inverse-surface": "#213145",
-                        "surface-tint": "#732ee4",
-                        "surface-container-lowest": "#ffffff",
-                        "on-error": "#ffffff",
-                        "surface-dim": "#cbdbf5",
-                        "on-tertiary": "#ffffff",
-                        "surface-container": "#e5eeff",
-                        "outline-variant": "#ccc3d8",
-                        "on-tertiary-container": "#e6e6eb",
-                        "on-surface-variant": "#4a4455",
-                        "on-tertiary-fixed-variant": "#45474b",
-                        "on-primary-fixed-variant": "#5a00c6",
-                        "tertiary": "#4d4f53",
-                        "on-error-container": "#93000a",
-                        "primary-container": "#7c3aed",
-                        "surface-container-low": "#eff4ff",
-                        "tertiary-fixed-dim": "#c6c6cb",
-                        "primary-fixed": "#eaddff",
-                        "outline": "#7b7487",
-                        "secondary": "#5f5e5e",
-                        "on-background": "#0b1c30",
-                        "secondary-container": "#e5e2e1",
-                        "inverse-primary": "#d2bbff",
+                        "primary": "#0056b3",
                         "on-primary": "#ffffff",
-                        "tertiary-fixed": "#e2e2e7",
-                        "surface-container-high": "#dce9ff",
-                        "inverse-on-surface": "#eaf1ff",
-                        "secondary-fixed": "#e5e2e1",
-                        "on-secondary-container": "#656464",
-                        "surface-bright": "#f8f9ff",
-                        "surface-variant": "#d3e4fe",
-                        "error": "#ba1a1a",
-                        "on-secondary-fixed-variant": "#474646",
-                        "surface-container-highest": "#d3e4fe",
-                        "primary-fixed-dim": "#d2bbff",
-                        "on-surface": "#0b1c30",
-                        "background": "#f8f9ff",
-                        "surface": "#f8f9ff",
-                        "on-tertiary-fixed": "#1a1c1f",
-                        "tertiary-container": "#65676b",
-                        "on-secondary": "#ffffff",
-                        "secondary-fixed-dim": "#c8c6c5",
-                        "on-secondary-fixed": "#1c1b1b",
-                        "on-primary-container": "#ede0ff",
-                        "on-primary-fixed": "#25005a",
-                        "primary": "#630ed4"
+                        "primary-container": "#000000",
+                        "on-primary-container": "#ffffff",
+                        "background": "#ffffff",
+                        "on-background": "#000000",
+                        "surface": "#ffffff",
+                        "on-surface": "#000000",
+                        "outline-variant": "#e0e0e0",
+                        "secondary": "#333333"
                     },
                     "borderRadius": {
                         "DEFAULT": "0.25rem",
@@ -134,6 +124,33 @@
             },
         }
     </script>
+
+<script>
+    function updateAuthUI(isLoggedIn) {
+        const exploreContainer = document.getElementById('exploreContainer');
+        const authPromptContainer = document.getElementById('authPromptContainer');
+        const navExplore = document.getElementById('navExplore');
+        const guestHeader = document.getElementById('guestHeaderActions');
+        const userHeader = document.getElementById('userHeaderActions');
+        const heroJoin = document.getElementById('heroJoinBtn');
+
+        if (isLoggedIn) {
+            exploreContainer.classList.remove('hidden');
+            authPromptContainer.classList.add('hidden');
+            navExplore.classList.remove('hidden');
+            guestHeader.classList.add('hidden');
+            userHeader.classList.remove('hidden');
+            heroJoin.classList.add('hidden');
+        } else {
+            exploreContainer.classList.add('hidden');
+            authPromptContainer.classList.remove('hidden');
+            navExplore.classList.add('hidden');
+            guestHeader.classList.remove('hidden');
+            userHeader.classList.add('hidden');
+            heroJoin.classList.remove('hidden');
+        }
+    }
+</script>
 </head>
 <body class="bg-background text-on-surface font-body-md selection:bg-primary/20">
 <!-- TopAppBar Shell -->
@@ -148,9 +165,13 @@
         <a class="font-label-lg text-on-surface-variant dark:text-outline-variant hover:opacity-80 transition-opacity" href="#">Bookings</a>
         <a class="font-label-lg text-on-surface-variant dark:text-outline-variant hover:opacity-80 transition-opacity" href="#">Profile</a>
     </div>
-    <div class="flex items-center gap-2">
+    <div id="guestHeaderActions" class="flex items-center gap-2">
         <button onclick="Android.openRegister()" class="bg-primary text-on-primary px-4 py-2 rounded-full font-label-lg text-sm transition-all active:scale-95 shadow-md">Join Now</button>
         <button class="material-symbols-outlined text-primary dark:text-inverse-primary hover:opacity-80 transition-opacity active:scale-95 transition-transform" data-icon="notifications">notifications</button>
+    </div>
+    <div id="userHeaderActions" class="hidden flex items-center gap-2">
+        <button onclick="Android.openProfile()" class="material-symbols-outlined text-primary hover:opacity-80">account_circle</button>
+        <button class="material-symbols-outlined text-primary dark:text-inverse-primary" data-icon="notifications">notifications</button>
     </div>
 </header>
 <main class="overflow-x-hidden">
@@ -168,18 +189,27 @@
                 <p class="font-body-lg text-on-surface-variant mb-6 max-w-2xl">
                     Connect with the world's most sought-after photographers, planners, and creators. A curated marketplace for those who demand excellence in every detail.
                 </p>
-                <button onclick="Android.openRegister()" class="mb-12 bg-primary-container text-on-primary px-10 py-4 rounded-full font-label-lg text-lg hover:scale-105 transition-transform shadow-xl active:scale-95">Get Started - Join Now</button>
+                <div id="heroJoinBtn">
+                    <button onclick="Android.openRegister()" class="mb-12 bg-primary-container text-on-primary px-10 py-4 rounded-full font-label-lg text-lg hover:scale-105 transition-transform shadow-xl active:scale-95">Get Started - Join Now</button>
+                </div>
                 <!-- Search/Filter Bar -->
-                <div class="glass-card p-2 md:p-4 rounded-full border border-outline-variant/30 shadow-2xl flex flex-col md:flex-row gap-2 max-w-3xl">
-                    <div class="flex-1 flex items-center px-4 gap-3 border-b md:border-b-0 md:border-r border-outline-variant/20 py-2 md:py-0">
-                        <span class="material-symbols-outlined text-primary" data-icon="search">search</span>
-                        <input class="bg-transparent border-none focus:ring-0 w-full font-body-md text-on-surface placeholder:text-outline" aria-label="Who are you looking for?" placeholder="Who are you looking for?" type="text">
+                <div id="exploreContainer" class="hidden">
+                    <div class="glass-card p-2 md:p-4 rounded-full border border-outline-variant/30 shadow-2xl flex flex-col md:flex-row gap-2 max-w-3xl">
+                        <div class="flex-1 flex items-center px-4 gap-3 border-b md:border-b-0 md:border-r border-outline-variant/20 py-2 md:py-0">
+                            <span class="material-symbols-outlined text-primary" data-icon="search">search</span>
+                            <input class="bg-transparent border-none focus:ring-0 w-full font-body-md text-on-surface placeholder:text-outline" aria-label="Who are you looking for?" placeholder="Who are you looking for?" type="text">
+                        </div>
+                        <div class="flex-1 flex items-center px-4 gap-3 py-2 md:py-0">
+                            <span class="material-symbols-outlined text-primary" data-icon="event">event</span>
+                            <input class="bg-transparent border-none focus:ring-0 w-full font-body-md text-on-surface placeholder:text-outline" aria-label="Select event date" placeholder="Select event date" type="text">
+                        </div>
+                        <button onclick="Android.openExplore()" class="bg-primary hover:bg-primary-container text-on-primary px-8 py-3 rounded-full font-label-lg transition-all active:scale-95 shadow-lg shadow-primary/20 flex items-center justify-center">Explore</button>
                     </div>
-                    <div class="flex-1 flex items-center px-4 gap-3 py-2 md:py-0">
-                        <span class="material-symbols-outlined text-primary" data-icon="event">event</span>
-                        <input class="bg-transparent border-none focus:ring-0 w-full font-body-md text-on-surface placeholder:text-outline" aria-label="Select event date" placeholder="Select event date" type="text">
-                    </div>
-                    <a href="explore.html" class="bg-primary hover:bg-primary-container text-on-primary px-8 py-3 rounded-full font-label-lg transition-all active:scale-95 shadow-lg shadow-primary/20 flex items-center justify-center">Explore</a>
+                </div>
+
+                <div id="authPromptContainer" class="mt-8">
+                    <p class="text-on-surface-variant mb-4">Log in to unlock exclusive access to elite talent.</p>
+                    <button onclick="Android.openLogin()" class="bg-primary-container text-on-primary px-10 py-4 rounded-full font-label-lg text-lg shadow-xl active:scale-95">Sign In to Explore</button>
                 </div>
             </div>
         </div>
@@ -282,12 +312,12 @@
         <span class="material-symbols-outlined" data-icon="home">home</span>
         <span class="font-label-sm text-label-sm uppercase tracking-wider">Home</span>
     </div>
-    <a href="explore.html" class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim px-3 py-1 hover:text-primary transition-colors active:scale-90 transition-transform duration-200 cursor-pointer">
+    <a id="navExplore" href="javascript:void(0)" onclick="Android.openExplore()" class="hidden flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim px-3 py-1 hover:text-primary transition-colors active:scale-90 transition-transform duration-200 cursor-pointer">
         <span class="material-symbols-outlined" data-icon="search">search</span>
         <span class="font-label-sm text-label-sm uppercase tracking-wider">Explore</span>
     </a>
-    <a href="javascript:void(0)" onclick="Android.openLogin()" class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim px-3 py-1 hover:text-primary transition-colors active:scale-90 transition-transform duration-200 cursor-pointer"><span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span><span class="font-label-sm text-label-sm uppercase tracking-wider">Bookings</span></a>
-    <a href="javascript:void(0)" onclick="Android.openLogin()" class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim px-3 py-1 hover:text-primary transition-colors active:scale-90 transition-transform duration-200 cursor-pointer"><span class="material-symbols-outlined" data-icon="person">person</span><span class="font-label-sm text-label-sm uppercase tracking-wider">Profile</span></a>
+    <a href="javascript:void(0)" onclick="Android.openProfile()" class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim px-3 py-1 hover:text-primary transition-colors active:scale-90 transition-transform duration-200 cursor-pointer"><span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span><span class="font-label-sm text-label-sm uppercase tracking-wider">Bookings</span></a>
+    <a href="javascript:void(0)" onclick="Android.openProfile()" class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim px-3 py-1 hover:text-primary transition-colors active:scale-90 transition-transform duration-200 cursor-pointer"><span class="material-symbols-outlined" data-icon="person">person</span><span class="font-label-sm text-label-sm uppercase tracking-wider">Profile</span></a>
 </nav>
 <footer class="bg-surface-container py-16 px-4 md:px-margin-desktop text-on-surface-variant">
     <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-outline-variant/20 pb-16">
@@ -359,6 +389,33 @@
         section.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-10');
         observer.observe(section);
     });
+</script>
+
+<script>
+    function updateAuthUI(isLoggedIn) {
+        const exploreContainer = document.getElementById('exploreContainer');
+        const authPromptContainer = document.getElementById('authPromptContainer');
+        const navExplore = document.getElementById('navExplore');
+        const guestHeader = document.getElementById('guestHeaderActions');
+        const userHeader = document.getElementById('userHeaderActions');
+        const heroJoin = document.getElementById('heroJoinBtn');
+
+        if (isLoggedIn) {
+            exploreContainer.classList.remove('hidden');
+            authPromptContainer.classList.add('hidden');
+            navExplore.classList.remove('hidden');
+            guestHeader.classList.add('hidden');
+            userHeader.classList.remove('hidden');
+            heroJoin.classList.add('hidden');
+        } else {
+            exploreContainer.classList.add('hidden');
+            authPromptContainer.classList.remove('hidden');
+            navExplore.classList.add('hidden');
+            guestHeader.classList.remove('hidden');
+            userHeader.classList.add('hidden');
+            heroJoin.classList.remove('hidden');
+        }
+    }
 </script>
 
 

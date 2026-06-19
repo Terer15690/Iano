@@ -19,53 +19,13 @@
             theme: {
                 extend: {
                     "colors": {
-                        "secondary-fixed-dim": "#c8c6c5",
-                        "tertiary": "#4d4f53",
-                        "on-primary-fixed-variant": "#5a00c6",
-                        "primary-fixed-dim": "#d2bbff",
-                        "on-secondary": "#ffffff",
-                        "tertiary-fixed": "#e2e2e7",
-                        "surface-container-highest": "#d3e4fe",
-                        "surface-container-lowest": "#ffffff",
-                        "background": "#f8f9ff",
-                        "surface-container-high": "#dce9ff",
-                        "on-secondary-fixed": "#1c1b1b",
-                        "tertiary-container": "#65676b",
-                        "secondary-fixed": "#e5e2e1",
-                        "on-primary-container": "#ede0ff",
-                        "primary-container": "#7c3aed",
-                        "on-tertiary-fixed": "#1a1c1f",
-                        "on-error": "#ffffff",
-                        "surface-container-low": "#eff4ff",
-                        "outline-variant": "#ccc3d8",
-                        "on-secondary-fixed-variant": "#474646",
-                        "on-secondary-container": "#656464",
-                        "surface": "#f8f9ff",
-                        "error-container": "#ffdad6",
-                        "tertiary-fixed-dim": "#c6c6cb",
-                        "inverse-surface": "#213145",
-                        "on-surface-variant": "#4a4455",
-                        "inverse-on-surface": "#eaf1ff",
-                        "secondary": "#5f5e5e",
-                        "primary": "#630ed4",
-                        "surface-bright": "#f8f9ff",
-                        "on-tertiary": "#ffffff",
-                        "on-primary-fixed": "#25005a",
-                        "on-error-container": "#93000a",
-                        "on-tertiary-container": "#e6e6eb",
-                        "secondary-container": "#e5e2e1",
-                        "on-tertiary-fixed-variant": "#45474b",
-                        "inverse-primary": "#d2bbff",
-                        "surface-tint": "#732ee4",
-                        "error": "#ba1a1a",
-                        "primary-fixed": "#eaddff",
+                        "primary": "#0056b3",
                         "on-primary": "#ffffff",
-                        "on-background": "#0b1c30",
-                        "surface-dim": "#cbdbf5",
-                        "surface-container": "#e5eeff",
-                        "outline": "#7b7487",
-                        "surface-variant": "#d3e4fe",
-                        "on-surface": "#0b1c30"
+                        "background": "#ffffff",
+                        "on-background": "#000000",
+                        "surface": "#f8f9ff",
+                        "on-surface": "#000000",
+                        "outline-variant": "#e0e0e0"
                     },
                     "borderRadius": {
                         "DEFAULT": "0.25rem",
@@ -128,8 +88,9 @@
             100% { stroke-dashoffset: 0; }
         }
         .violet-gradient-btn {
-            background: linear-gradient(135deg, #7c3aed 0%, #630ed4 100%);
-            box-shadow: 0 4px 15px rgba(99, 14, 212, 0.2);
+            background: #000000;
+            color: #ffffff;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
     </style>
 <style>
@@ -195,9 +156,9 @@
 </div>
 <!-- Actions -->
 <div class="flex flex-col items-center gap-6">
-<button class="violet-gradient-btn w-full md:w-auto px-12 py-5 rounded-full text-on-primary font-label-lg text-label-lg hover:scale-[1.02] active:scale-95 transition-all duration-300">
-                    View My Bookings
-                </button>
+<button onclick="Android.openProfile()" class="violet-gradient-btn w-full md:w-auto px-12 py-5 rounded-full text-on-primary font-label-lg text-label-lg hover:scale-[1.02] active:scale-95 transition-all duration-300">
+                    View My Dashboard
+</button>
 <a class="font-label-lg text-label-lg text-primary hover:text-primary-container transition-colors flex items-center gap-2 group" href="index.html">
 <span class="material-symbols-outlined text-lg group-hover:-translate-x-1 transition-transform">arrow_back</span>
                     Back to Home

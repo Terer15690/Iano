@@ -31,53 +31,17 @@
             theme: {
                 extend: {
                     "colors": {
-                        "secondary-fixed-dim": "#c8c6c5",
-                        "tertiary": "#4d4f53",
-                        "on-primary-fixed-variant": "#5a00c6",
-                        "primary-fixed-dim": "#d2bbff",
-                        "on-secondary": "#ffffff",
-                        "tertiary-fixed": "#e2e2e7",
-                        "surface-container-highest": "#d3e4fe",
-                        "surface-container-lowest": "#ffffff",
-                        "background": "#f8f9ff",
-                        "surface-container-high": "#dce9ff",
-                        "on-secondary-fixed": "#1c1b1b",
-                        "tertiary-container": "#65676b",
-                        "secondary-fixed": "#e5e2e1",
-                        "on-primary-container": "#ede0ff",
-                        "primary-container": "#7c3aed",
-                        "on-tertiary-fixed": "#1a1c1f",
-                        "on-error": "#ffffff",
-                        "surface-container-low": "#eff4ff",
-                        "outline-variant": "#ccc3d8",
-                        "on-secondary-fixed-variant": "#474646",
-                        "on-secondary-container": "#656464",
-                        "surface": "#f8f9ff",
-                        "error-container": "#ffdad6",
-                        "tertiary-fixed-dim": "#c6c6cb",
-                        "inverse-surface": "#213145",
-                        "on-surface-variant": "#4a4455",
-                        "inverse-on-surface": "#eaf1ff",
-                        "secondary": "#5f5e5e",
-                        "primary": "#630ed4",
-                        "surface-bright": "#f8f9ff",
-                        "on-tertiary": "#ffffff",
-                        "on-primary-fixed": "#25005a",
-                        "on-error-container": "#93000a",
-                        "on-tertiary-container": "#e6e6eb",
-                        "secondary-container": "#e5e2e1",
-                        "on-tertiary-fixed-variant": "#45474b",
-                        "inverse-primary": "#d2bbff",
-                        "surface-tint": "#732ee4",
-                        "error": "#ba1a1a",
-                        "primary-fixed": "#eaddff",
+                        "primary": "#0056b3",
                         "on-primary": "#ffffff",
-                        "on-background": "#0b1c30",
-                        "surface-dim": "#cbdbf5",
-                        "surface-container": "#e5eeff",
-                        "outline": "#7b7487",
-                        "surface-variant": "#d3e4fe",
-                        "on-surface": "#0b1c30"
+                        "primary-container": "#000000",
+                        "on-primary-container": "#ffffff",
+                        "background": "#ffffff",
+                        "on-background": "#000000",
+                        "surface": "#ffffff",
+                        "on-surface": "#000000",
+                        "outline-variant": "#e0e0e0",
+                        "surface-container-low": "#f5f5f5",
+                        "surface-container-high": "#eeeeee"
                     },
                     "borderRadius": {
                         "DEFAULT": "0.25rem",
@@ -215,10 +179,10 @@
 </div>
 <div class="p-6">
 <div class="flex justify-between items-start mb-2">
-<h3 class="font-headline-sm text-on-surface">Alexandra Vance</h3>
+<h3 class="font-headline-sm text-on-surface">Maina Kamau</h3>
 <div class="flex flex-col items-end">
 <span class="text-label-sm text-on-surface-variant font-label-sm uppercase tracking-wider">Starting From</span>
-<span class="text-primary font-bold text-lg">$1,200</span>
+<span class="text-primary font-bold text-lg">KSh 15,000</span>
 </div>
 </div>
 <p class="text-on-surface-variant font-body-md line-clamp-1 mb-4">Luxury wedding &amp; editorial portrait specialist.</p>
@@ -247,10 +211,10 @@
 </div>
 <div class="p-6">
 <div class="flex justify-between items-start mb-2">
-<h3 class="font-headline-sm text-on-surface">Julian Thorne</h3>
+<h3 class="font-headline-sm text-on-surface">Njeri Wambui</h3>
 <div class="flex flex-col items-end">
 <span class="text-label-sm text-on-surface-variant font-label-sm uppercase tracking-wider">Starting From</span>
-<span class="text-primary font-bold text-lg">$950</span>
+<span class="text-primary font-bold text-lg">KSh 12,500</span>
 </div>
 </div>
 <p class="text-on-surface-variant font-body-md line-clamp-1 mb-4">Candid storytelling for authentic moments.</p>
@@ -279,10 +243,10 @@
 </div>
 <div class="p-6">
 <div class="flex justify-between items-start mb-2">
-<h3 class="font-headline-sm text-on-surface">Marcus Chen</h3>
+<h3 class="font-headline-sm text-on-surface">Otieno Juma</h3>
 <div class="flex flex-col items-end">
 <span class="text-label-sm text-on-surface-variant font-label-sm uppercase tracking-wider">Starting From</span>
-<span class="text-primary font-bold text-lg">$1,500</span>
+<span class="text-primary font-bold text-lg">KSh 25,000</span>
 </div>
 </div>
 <p class="text-on-surface-variant font-body-md line-clamp-1 mb-4">Precision architectural &amp; luxury event coverage.</p>
@@ -293,7 +257,73 @@
 <a href="profile.html" class="w-full py-3 bg-primary text-white rounded-xl font-label-lg hover:bg-on-primary-fixed-variant transition-all active:scale-[0.98] block text-center">View Portfolio</a>
 </div>
 </div>
+
+            <!-- Vendor Onboarding Section -->
+            <div class="mt-8 p-8 bg-primary rounded-3xl shadow-xl text-white">
+                <h3 class="font-headline-sm mb-2">Are you a professional?</h3>
+                <p class="mb-6 opacity-90 font-body-md">Join our elite network of Kenyan photographers and planners. Upload your work and set your own prices.</p>
+                <button onclick="Android.openAddListing()" class="w-full py-4 bg-white text-primary rounded-xl font-bold text-lg hover:scale-105 transition-transform active:scale-95 shadow-lg">Add My Work &amp; Pricing</button>
+            </div>
+
+            <!-- Network API Test Section -->
+            <div class="mt-8 p-6 bg-white rounded-3xl shadow-sm border border-outline-variant/20">
+                <h3 class="font-headline-sm text-on-surface mb-2">Live Nairobi Weather</h3>
+                <p class="text-on-surface-variant mb-4 font-body-md">Get current weather in Nairobi via Open-Meteo API.</p>
+                <div id="weatherDisplay" class="text-primary font-bold text-xl mb-4 hidden"></div>
+                <button onclick="Android.fetchWeather()" class="w-full py-3 border-2 border-primary text-primary rounded-xl font-label-lg hover:bg-primary/5 transition-all">Get Weather Status</button>
+            </div>
+
+            <!-- Vendor Onboarding Section -->
+            <div class="mt-8 p-8 bg-primary rounded-3xl shadow-xl text-white">
+                <h3 class="font-headline-sm mb-2">Are you a professional?</h3>
+                <p class="mb-6 opacity-90 font-body-md">Join our elite network of Kenyan photographers and planners. Upload your work and set your own prices.</p>
+                <button onclick="Android.openAddListing()" class="w-full py-4 bg-white text-primary rounded-xl font-bold text-lg hover:scale-105 transition-transform active:scale-95 shadow-lg">Add My Work &amp; Pricing</button>
+            </div>
+
+            <!-- Network API Test Section -->
+            <div class="mt-8 p-6 bg-white rounded-3xl shadow-sm border border-outline-variant/20">
+                <h3 class="font-headline-sm text-on-surface mb-2">Network Status</h3>
+                <div id="networkStatus" class="px-4 py-2 rounded-lg text-sm font-bold inline-block mb-4">Checking connection...</div>
+
+                <h3 class="font-headline-sm text-on-surface mb-2">Vendor Announcements</h3>
+                <p class="text-on-surface-variant mb-4 font-body-md">Tap below to fetch real-time updates from our cloud API.</p>
+                <div id="apiDataList" class="space-y-4 mb-6"></div>
+                <button id="fetchBtn" onclick="Android.fetchApiData()" class="w-full py-3 border-2 border-primary text-primary rounded-xl font-label-lg hover:bg-primary/5 transition-all">Update Announcements</button>
+            </div>
+
 </div>
+
+<script>
+    function showNetworkStatus(isOnline) {
+        const statusDiv = document.getElementById('networkStatus');
+        if (isOnline) {
+            statusDiv.innerText = "● Online";
+            statusDiv.className = "px-4 py-2 rounded-lg text-sm font-bold inline-block mb-4 bg-green-100 text-green-700";
+        } else {
+            statusDiv.innerText = "○ Offline";
+            statusDiv.className = "px-4 py-2 rounded-lg text-sm font-bold inline-block mb-4 bg-red-100 text-red-700";
+        }
+    }
+
+    function displayApiData(data) {
+        const container = document.getElementById('apiDataList');
+        container.innerHTML = ''; // Clear old
+        data.forEach(item => {
+            const div = document.createElement('div');
+            div.className = "p-4 bg-surface-container-low rounded-xl border border-outline-variant/30";
+            div.innerHTML = `
+                <h4 class="font-bold text-primary mb-1">${item.title}</h4>
+                <p class="text-sm text-on-surface-variant">${item.body.substring(0, 80)}...</p>
+            `;
+            container.appendChild(div);
+        });
+    }
+    function updateWeatherUI(temp) {
+        const display = document.getElementById('weatherDisplay');
+        display.innerText = "Current Nairobi Temp: " + temp;
+        display.classList.remove('hidden');
+    }
+</script>
 </section>
 <!-- Dynamic Content (Asymmetric Layout Demo) -->
 <section class="mt-section-gap mb-12">

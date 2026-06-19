@@ -14,7 +14,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class RegisterActivity extends AppCompatActivity {
-    private EditText etEmail, etPassword;
+    private EditText etEmail, etPassword, etFullName;
     private Button btnRegister;
     private TextView tvLoginLink;
     private FirebaseAuth mAuth;
@@ -28,6 +28,7 @@ public class RegisterActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
+        etFullName = findViewById(R.id.etFullName);
         etEmail = findViewById(R.id.etEmail);
         etPassword = findViewById(R.id.etPassword);
         btnRegister = findViewById(R.id.btnRegister);
@@ -49,24 +50,27 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void registerUser() {
+        String name = etFullName.getText().toString().trim();
         String email = etEmail.getText().toString().trim();
         String password = etPassword.getText().toString().trim();
+
+        if (TextUtils.isEmpty(name)) {
+            Toast.makeText(this, "Enter name", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         if (TextUtils.isEmpty(email)) {
             Toast.makeText(this, "Enter email", Toast.LENGTH_SHORT).show();
             return;
         }
-
-        if (TextUtils.isEmpty(password)) {
-            Toast.makeText(this, "Enter password", Toast.LENGTH_SHORT).show();
-            return;
-        }
+        
+        // ... (rest of validation)
 
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
                         String userId = mAuth.getCurrentUser().getUid();
-                        User user = new User(email, userId);
+                        User user = new User(email, userId, name);
                         
                         mDatabase.child("users").child(userId).setValue(user)
                             .addOnCompleteListener(dbTask -> {

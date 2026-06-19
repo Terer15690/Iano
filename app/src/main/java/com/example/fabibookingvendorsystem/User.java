@@ -3,13 +3,15 @@ package com.example.fabibookingvendorsystem;
 public class User {
     public String email;
     public String uid;
+    public String name;
+    public String lastLogin;
 
     public User() {
-        // Default constructor required for calls to DataSnapshot.getValue(User.class)
     }
 
-    public User(String email, String uid) {
+    public User(String email, String uid, String name) {
         this.email = email;
         this.uid = uid;
+        this.name = name;
     }
 }

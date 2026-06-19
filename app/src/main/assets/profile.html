@@ -29,53 +29,15 @@
           theme: {
             extend: {
               "colors": {
-                      "secondary-fixed-dim": "#c8c6c5",
-                      "tertiary": "#4d4f53",
-                      "on-primary-fixed-variant": "#5a00c6",
-                      "primary-fixed-dim": "#d2bbff",
-                      "on-secondary": "#ffffff",
-                      "tertiary-fixed": "#e2e2e7",
-                      "surface-container-highest": "#d3e4fe",
-                      "surface-container-lowest": "#ffffff",
-                      "background": "#f8f9ff",
-                      "surface-container-high": "#dce9ff",
-                      "on-secondary-fixed": "#1c1b1b",
-                      "tertiary-container": "#65676b",
-                      "secondary-fixed": "#e5e2e1",
-                      "on-primary-container": "#ede0ff",
-                      "primary-container": "#7c3aed",
-                      "on-tertiary-fixed": "#1a1c1f",
-                      "on-error": "#ffffff",
-                      "surface-container-low": "#eff4ff",
-                      "outline-variant": "#ccc3d8",
-                      "on-secondary-fixed-variant": "#474646",
-                      "on-secondary-container": "#656464",
-                      "surface": "#f8f9ff",
-                      "error-container": "#ffdad6",
-                      "tertiary-fixed-dim": "#c6c6cb",
-                      "inverse-surface": "#213145",
-                      "on-surface-variant": "#4a4455",
-                      "inverse-on-surface": "#eaf1ff",
-                      "secondary": "#5f5e5e",
-                      "primary": "#630ed4",
-                      "surface-bright": "#f8f9ff",
-                      "on-tertiary": "#ffffff",
-                      "on-primary-fixed": "#25005a",
-                      "on-error-container": "#93000a",
-                      "on-tertiary-container": "#e6e6eb",
-                      "secondary-container": "#e5e2e1",
-                      "on-tertiary-fixed-variant": "#45474b",
-                      "inverse-primary": "#d2bbff",
-                      "surface-tint": "#732ee4",
-                      "error": "#ba1a1a",
-                      "primary-fixed": "#eaddff",
-                      "on-primary": "#ffffff",
-                      "on-background": "#0b1c30",
-                      "surface-dim": "#cbdbf5",
-                      "surface-container": "#e5eeff",
-                      "outline": "#7b7487",
-                      "surface-variant": "#d3e4fe",
-                      "on-surface": "#0b1c30"
+                        "primary": "#0056b3",
+                        "on-primary": "#ffffff",
+                        "primary-container": "#000000",
+                        "on-primary-container": "#ffffff",
+                        "background": "#ffffff",
+                        "on-background": "#000000",
+                        "surface": "#ffffff",
+                        "on-surface": "#000000",
+                        "outline-variant": "#e0e0e0"
               },
               "borderRadius": {
                       "DEFAULT": "0.25rem",
@@ -149,12 +111,12 @@
 <div class="absolute bottom-0 left-0 w-full p-6 md:p-16 flex flex-col gap-4">
 <div class="flex flex-col gap-1">
 <span class="text-primary-fixed-dim font-label-lg text-label-lg uppercase tracking-[0.2em]">Fashion &amp; Event Photography</span>
-<h2 class="text-white font-display-lg text-4xl md:text-display-lg">Julian Rivers</h2>
+<h2 class="text-white font-display-lg text-4xl md:text-display-lg">Maina Kamau</h2>
 </div>
 <div class="flex flex-wrap items-center gap-6 text-white/90">
 <div class="flex items-center gap-2">
 <span class="material-symbols-outlined text-primary-fixed-dim">location_on</span>
-<span class="font-body-md text-body-md">New York City, NY</span>
+<span class="font-body-md text-body-md">Nairobi, Kenya</span>
 </div>
 <div class="flex items-center gap-2">
 <span class="material-symbols-outlined text-yellow-400" style="font-variation-settings: 'FILL' 1;">star</span>
@@ -271,12 +233,31 @@
 <div class="flex flex-col">
 <span class="font-label-sm text-on-surface-variant">Starting from</span>
 <div class="flex items-baseline gap-1">
-<span class="font-headline-sm text-on-background">$450</span>
-<span class="font-label-sm text-on-surface-variant">/ hour</span>
+<span class="font-headline-sm text-on-background">KSh 15,000</span>
+<span class="font-label-sm text-on-surface-variant">/ project</span>
 </div>
 </div>
-<a href="confirmed.html" class="bg-primary-container text-white px-10 py-4 rounded-xl font-label-lg text-label-lg uppercase tracking-widest shadow-lg shadow-primary/20 hover:scale-105 active:scale-95 transition-all block text-center">Book Now</a>
+<button onclick="triggerBooking()" class="bg-primary-container text-white px-10 py-4 rounded-xl font-label-lg text-label-lg uppercase tracking-widest shadow-lg shadow-primary/20 hover:scale-105 active:scale-95 transition-all">
+            Book Now
+</button>
 </div>
+
+<script>
+    function triggerBooking() {
+        const photographer = "Maina Kamau";
+        const amount = "KSh 15,000";
+        const location = "Nairobi, Kenya";
+        const date = new Date().toLocaleString(); // Current date and time
+
+        // Call the Android Bridge
+        if (typeof Android !== 'undefined') {
+            Android.sendBookingEmail(photographer, amount, location, date);
+        }
+
+        // Navigate to confirmation page
+        window.location.href = "confirmed.html";
+    }
+</script>
 <!-- Navigation suppressed for transactional/detail focus -->
 <script>
         // Simple scroll effect for TopAppBar

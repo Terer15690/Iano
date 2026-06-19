@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="List Your Service"
+            android:textSize="28sp"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:layout_marginBottom="24dp"/>
+
+        <EditText
+            android:id="@+id/etServiceName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Business/Artist Name"
+            android:textColor="#000000"
+            android:background="@android:drawable/editbox_background"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp"
+            android:inputType="textPersonName"/>
+
+        <Spinner
+            android:id="@+id/spinnerCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:background="@android:drawable/btn_dropdown"
+            android:entries="@array/categories_array"/>
+
+        <EditText
+            android:id="@+id/etPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Price (e.g. KSh 20,000)"
+            android:textColor="#000000"
+            android:inputType="text"
+            android:background="@android:drawable/editbox_background"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp"/>
+
+        <EditText
+            android:id="@+id/etLocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Location (e.g. Nairobi)"
+            android:textColor="#000000"
+            android:background="@android:drawable/editbox_background"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp"
+            android:inputType="textPostalAddress"/>
+
+        <EditText
+            android:id="@+id/etDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Describe your work/style..."
+            android:textColor="#000000"
+            android:gravity="top"
+            android:lines="4"
+            android:background="@android:drawable/editbox_background"
+            android:padding="12dp"
+            android:layout_marginBottom="24dp"
+            android:inputType="textMultiLine"/>
+
+        <Button
+            android:id="@+id/btnSubmitListing"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="Upload Portfolio &amp; Price"
+            android:backgroundTint="#0056b3"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:padding="16dp"/>
+
+    </LinearLayout>
+</ScrollView>
