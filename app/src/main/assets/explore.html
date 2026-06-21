@@ -1,412 +1,160 @@
 <!DOCTYPE html>
-
-<html class="light" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>FABI - Explore Elite Talent</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        .glass-card {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-        }
-        .hide-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-        .hide-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>FABI - Explore Elite Talent</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
-<script id="tailwind-config">
+    <script id="tailwind-config">
         tailwind.config = {
-            darkMode: "class",
             theme: {
                 extend: {
-                    "colors": {
+                    colors: {
                         "primary": "#0056b3",
-                        "on-primary": "#ffffff",
-                        "primary-container": "#000000",
-                        "on-primary-container": "#ffffff",
                         "background": "#ffffff",
                         "on-background": "#000000",
                         "surface": "#ffffff",
                         "on-surface": "#000000",
-                        "outline-variant": "#e0e0e0",
-                        "surface-container-low": "#f5f5f5",
-                        "surface-container-high": "#eeeeee"
-                    },
-                    "borderRadius": {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "full": "9999px"
-                    },
-                    "spacing": {
-                        "container-max": "1280px",
-                        "margin-mobile": "16px",
-                        "base": "8px",
-                        "margin-desktop": "64px",
-                        "gutter": "24px",
-                        "section-gap": "120px"
-                    },
-                    "fontFamily": {
-                        "label-sm": ["Plus Jakarta Sans"],
-                        "headline-md": ["Playfair Display"],
-                        "display-lg": ["Playfair Display"],
-                        "body-lg": ["Plus Jakarta Sans"],
-                        "headline-sm": ["Playfair Display"],
-                        "label-lg": ["Plus Jakarta Sans"],
-                        "body-md": ["Plus Jakarta Sans"],
-                        "headline-lg": ["Playfair Display"],
-                        "headline-lg-mobile": ["Playfair Display"]
-                    },
-                    "fontSize": {
-                        "label-sm": ["12px", {"lineHeight": "1.2", "fontWeight": "500"}],
-                        "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
-                        "display-lg": ["56px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
-                        "headline-sm": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
-                        "label-lg": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
-                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
-                        "headline-lg": ["40px", {"lineHeight": "1.2", "fontWeight": "700"}],
-                        "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}]
+                        "outline-variant": "#e0e0e0"
                     }
-                },
-            },
+                }
+            }
         }
     </script>
-<style>
-    body {
-      min-height: max(884px, 100dvh);
-    }
-  </style>
-  </head>
-<body class="bg-background text-on-surface font-body-md selection:bg-primary/20">
-<!-- TopAppBar -->
-<header class="fixed top-0 w-full z-50 bg-surface/70 backdrop-blur-md border-b border-outline-variant/20 flex justify-between items-center px-4 h-16">
-<a href="index.html" class="flex items-center gap-4">
-<button class="material-symbols-outlined text-on-surface-variant hover:opacity-80 active:scale-95 transition-all">arrow_back</button>
-<h1 class="font-display-lg text-headline-sm tracking-tight text-primary">FABI</h1>
-</a>
-<div class="flex items-center gap-2">
-<button class="material-symbols-outlined text-on-surface-variant hover:opacity-80 active:scale-95 transition-all">notifications</button>
-<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant">
-<img alt="Profile" data-alt="A professional headshot of a high-end female event planner with a warm smile, wearing a sophisticated neutral-toned blazer. The background is a soft-focus, bright minimalist office environment with clean lines and natural light. The overall mood is professional, welcoming, and elegant, aligning with the luxury corporate-modern brand identity of FABI." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3fCu5SYG1PT5x8bTsrv0pchOlVEIpSxXy80HcM6m60Z8-PcqpYLwr1uiWVfG1CebyBcyB81Vvnx9ZIKGzJFOZ9rTD68-LJ120daYgz-X188crEBz_3U7Nqe94oL6aRByWT84jeA-j6jwiYJczk6BNwMpBtlvHdjohOITT6ox_85W_LAAU83m1dLHc7iCNkZAgNNen9bcnEnTYwMCsFXubuH19FFf3hs83aiHEKw4BKua2eBFSt6Cl4lK3Ok4SieG8hmb_D98FskY"/>
-</div>
-</div>
-</header>
-<main class="pt-20 pb-24 max-w-container-max mx-auto px-4 md:px-margin-desktop">
-<!-- Search Section -->
-<section class="mb-8">
-<div class="relative group">
-<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">search</span>
-<input class="w-full bg-surface-container-low border border-outline-variant/50 rounded-xl py-4 pl-12 pr-4 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all font-body-md shadow-sm group-hover:shadow-md" placeholder="Search for 'Elite Wedding Photographers'..." type="text"/>
-<button class="absolute right-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-primary hover:scale-110 transition-transform">tune</button>
-</div>
-</section>
-<!-- Categories Horizontal Scroll -->
-<section class="mb-10">
-<div class="flex items-center justify-between mb-4">
-<h2 class="font-headline-sm text-headline-sm text-on-surface">Categories</h2>
-<button class="text-primary font-label-lg text-label-lg hover:underline transition-all">View All</button>
-</div>
-<div class="flex gap-3 overflow-x-auto hide-scrollbar pb-2">
-<!-- Category Chip Active -->
-<button class="flex items-center gap-2 px-5 py-2.5 bg-primary-container text-on-primary-container rounded-full whitespace-nowrap shadow-sm hover:opacity-90 transition-all">
-<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">photo_camera</span>
-<span class="font-label-lg text-label-lg">Photographers</span>
-</button>
-<!-- Category Chip -->
-<button class="flex items-center gap-2 px-5 py-2.5 bg-surface-container-high text-on-surface-variant rounded-full whitespace-nowrap hover:bg-surface-container-highest transition-all">
-<span class="material-symbols-outlined text-[20px]">videocam</span>
-<span class="font-label-lg text-label-lg">Videographers</span>
-</button>
-<button class="flex items-center gap-2 px-5 py-2.5 bg-surface-container-high text-on-surface-variant rounded-full whitespace-nowrap hover:bg-surface-container-highest transition-all">
-<span class="material-symbols-outlined text-[20px]">music_note</span>
-<span class="font-label-lg text-label-lg">DJs &amp; Music</span>
-</button>
-<button class="flex items-center gap-2 px-5 py-2.5 bg-surface-container-high text-on-surface-variant rounded-full whitespace-nowrap hover:bg-surface-container-highest transition-all">
-<span class="material-symbols-outlined text-[20px]">local_florist</span>
-<span class="font-label-lg text-label-lg">Florists</span>
-</button>
-<button class="flex items-center gap-2 px-5 py-2.5 bg-surface-container-high text-on-surface-variant rounded-full whitespace-nowrap hover:bg-surface-container-highest transition-all">
-<span class="material-symbols-outlined text-[20px]">restaurant</span>
-<span class="font-label-lg text-label-lg">Catering</span>
-</button>
-</div>
-</section>
-<!-- Elite Talent List -->
-<section>
-<div class="flex items-center justify-between mb-6">
-<div>
-<h2 class="font-headline-sm text-headline-sm text-on-surface">Elite Photographers</h2>
-<p class="text-on-surface-variant font-body-md">Hand-picked professionals for your milestone events.</p>
-</div>
-<div class="hidden md:flex gap-2">
-<button class="p-2 border border-outline-variant rounded-full hover:bg-surface-container-low transition-colors">
-<span class="material-symbols-outlined">chevron_left</span>
-</button>
-<button class="p-2 border border-outline-variant rounded-full hover:bg-surface-container-low transition-colors">
-<span class="material-symbols-outlined">chevron_right</span>
-</button>
-</div>
-</div>
-<!-- Provider Grid/List -->
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
-<!-- Card 1 -->
-<div class="group relative bg-surface-container-low rounded-3xl overflow-hidden hover:shadow-[0_20px_50px_rgba(124,58,237,0.1)] transition-all duration-500 border border-transparent hover:border-outline-variant/30">
-<div class="relative h-80 overflow-hidden">
-<img alt="Alexandra Vance Portfolio" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A cinematic, high-fashion portrait photography shot in a grand, sun-drenched architectural space with high ceilings and marble details. The image captures a sophisticated model in elegant attire, with soft, directional lighting creating beautiful shadows. The style is editorial and luxurious, emphasizing premium quality and artistic vision, consistent with a high-end photography portfolio." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVVXe29Gow8wSJ6zBhiAFHrvoE_uy3alvB4yiGPgU17Sc4TNFuLG254FutfMdEigiPMyaAl39wtjufp7W22JgLzSj16zS0o0jzBIFZpTeZrL0dY3RsZTH76kBZfCvC-BRbpA00-yn89vPj1UBcL5ZW-fnxr3rWgc6eXP0jaPsfS9JGkmSdGVcOS53oiaqMUwjijwVQ99f5ia8tjY99Qq4OCGTcBMAtRDUsA4FbT-bpUi_cJVJcP8428Wcgs9XFPhGrgqm1nwLkA8Y"/>
-<div class="absolute top-4 right-4 z-10">
-<button class="bg-white/20 backdrop-blur-md p-2 rounded-full text-white hover:bg-primary transition-colors">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">favorite</span>
-</button>
-</div>
-<div class="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-black/60 to-transparent"></div>
-<div class="absolute bottom-4 left-4 flex items-center gap-1 text-white">
-<span class="material-symbols-outlined text-yellow-400" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="font-label-lg">4.9</span>
-<span class="text-white/70 text-label-sm">(124 reviews)</span>
-</div>
-</div>
-<div class="p-6">
-<div class="flex justify-between items-start mb-2">
-<h3 class="font-headline-sm text-on-surface">Maina Kamau</h3>
-<div class="flex flex-col items-end">
-<span class="text-label-sm text-on-surface-variant font-label-sm uppercase tracking-wider">Starting From</span>
-<span class="text-primary font-bold text-lg">KSh 15,000</span>
-</div>
-</div>
-<p class="text-on-surface-variant font-body-md line-clamp-1 mb-4">Luxury wedding &amp; editorial portrait specialist.</p>
-<div class="flex flex-wrap gap-2 mb-6">
-<span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-label-sm font-label-sm">Wedding</span>
-<span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-label-sm font-label-sm">Fashion</span>
-</div>
-<a href="profile.html" class="w-full py-3 bg-primary text-white rounded-xl font-label-lg hover:bg-on-primary-fixed-variant transition-all active:scale-[0.98] block text-center">View Portfolio</a>
-</div>
-</div>
-<!-- Card 2 -->
-<div class="group relative bg-surface-container-low rounded-3xl overflow-hidden hover:shadow-[0_20px_50px_rgba(124,58,237,0.1)] transition-all duration-500 border border-transparent hover:border-outline-variant/30">
-<div class="relative h-80 overflow-hidden">
-<img alt="Julian Thorne Portfolio" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A warm, candid moment at an outdoor wedding during golden hour. The photograph shows a couple laughing amidst soft, glowing backlight and floating dust motes, capturing a genuine, emotional connection. The color palette is rich with amber, gold, and deep forest greens, presenting a nostalgic yet premium aesthetic for an elite wedding photographer's portfolio." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjf8A0zJmTQnFzPEA3xxwpYihwydv5g1ghZ0IZEVCRbZiKAbqHkMPVXmtfQTX3j06qQ7RGnPz1chYcyoYyyQn_kHyq3f-aNrKI_ZKOULAvTspNkgZ5XP4DUr65ygosSP5Pp_KRc7Ubbcl9z8V54iusxh6Ky1zVld2diVNA30q37qoNUmfRIISFRZccCdTzEE96HwZoww-F48sYoSKG9LVib5952BCoPloHYsbva7cc71ap2h76xBwUoRqS4qGEbNlF4PFoGSwzf4c"/>
-<div class="absolute top-4 right-4 z-10">
-<button class="bg-white/20 backdrop-blur-md p-2 rounded-full text-white hover:bg-primary transition-colors">
-<span class="material-symbols-outlined">favorite</span>
-</button>
-</div>
-<div class="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-black/60 to-transparent"></div>
-<div class="absolute bottom-4 left-4 flex items-center gap-1 text-white">
-<span class="material-symbols-outlined text-yellow-400" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="font-label-lg">4.8</span>
-<span class="text-white/70 text-label-sm">(98 reviews)</span>
-</div>
-</div>
-<div class="p-6">
-<div class="flex justify-between items-start mb-2">
-<h3 class="font-headline-sm text-on-surface">Njeri Wambui</h3>
-<div class="flex flex-col items-end">
-<span class="text-label-sm text-on-surface-variant font-label-sm uppercase tracking-wider">Starting From</span>
-<span class="text-primary font-bold text-lg">KSh 12,500</span>
-</div>
-</div>
-<p class="text-on-surface-variant font-body-md line-clamp-1 mb-4">Candid storytelling for authentic moments.</p>
-<div class="flex flex-wrap gap-2 mb-6">
-<span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-label-sm font-label-sm">Lifestyle</span>
-<span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-label-sm font-label-sm">Events</span>
-</div>
-<a href="profile.html" class="w-full py-3 bg-primary text-white rounded-xl font-label-lg hover:bg-on-primary-fixed-variant transition-all active:scale-[0.98] block text-center">View Portfolio</a>
-</div>
-</div>
-<!-- Card 3 -->
-<div class="group relative bg-surface-container-low rounded-3xl overflow-hidden hover:shadow-[0_20px_50px_rgba(124,58,237,0.1)] transition-all duration-500 border border-transparent hover:border-outline-variant/30">
-<div class="relative h-80 overflow-hidden">
-<img alt="Marcus Chen Portfolio" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A minimalist architectural photography shot showcasing a modern, sleek interior event space. The image uses strong geometric lines, a monochromatic palette with subtle violet lighting accents, and perfect symmetry. The mood is sophisticated and high-tech, appealing to corporate event planners looking for precise and clean architectural documentation." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0ZurTCGL9lpGNUGVqjaqB_k9iv6gNcXOLkVSrJjKdRYWGSKDV1GbMap9qABwsGqoPUc06LRfUfX3nTBVCgl730XFMAkTzBm8KGNimP5GamoMwYl1CNTmEXmptxLMOIe_nGkkomHzO06rgm9_C6dWqN_nGvmJI2UpiInV4UvF5Nd1XNZnkaVdQVS2O2Y4D96IVXIGIio5jpLFi7GAJ646gEJ89LSCdjodvQKtIsIhhSUzHYoW-Xg_pmBgJ5nR7uhL0N2RxjUWIW2I"/>
-<div class="absolute top-4 right-4 z-10">
-<button class="bg-white/20 backdrop-blur-md p-2 rounded-full text-white hover:bg-primary transition-colors">
-<span class="material-symbols-outlined">favorite</span>
-</button>
-</div>
-<div class="absolute bottom-0 left-0 right-0 h-1/2 bg-gradient-to-t from-black/60 to-transparent"></div>
-<div class="absolute bottom-4 left-4 flex items-center gap-1 text-white">
-<span class="material-symbols-outlined text-yellow-400" style="font-variation-settings: 'FILL' 1;">star</span>
-<span class="font-label-lg">5.0</span>
-<span class="text-white/70 text-label-sm">(215 reviews)</span>
-</div>
-</div>
-<div class="p-6">
-<div class="flex justify-between items-start mb-2">
-<h3 class="font-headline-sm text-on-surface">Otieno Juma</h3>
-<div class="flex flex-col items-end">
-<span class="text-label-sm text-on-surface-variant font-label-sm uppercase tracking-wider">Starting From</span>
-<span class="text-primary font-bold text-lg">KSh 25,000</span>
-</div>
-</div>
-<p class="text-on-surface-variant font-body-md line-clamp-1 mb-4">Precision architectural &amp; luxury event coverage.</p>
-<div class="flex flex-wrap gap-2 mb-6">
-<span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-label-sm font-label-sm">Architecture</span>
-<span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-label-sm font-label-sm">Corporate</span>
-</div>
-<a href="profile.html" class="w-full py-3 bg-primary text-white rounded-xl font-label-lg hover:bg-on-primary-fixed-variant transition-all active:scale-[0.98] block text-center">View Portfolio</a>
-</div>
-</div>
+</head>
+<body class="bg-background text-on-surface font-sans selection:bg-blue-100">
+    <!-- TopAppBar -->
+    <header class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-200 flex justify-between items-center px-4 h-16">
+        <a href="index.html" class="flex items-center gap-4">
+            <span class="material-symbols-outlined text-black">arrow_back</span>
+            <h1 class="text-xl font-bold text-blue-700">FABI</h1>
+        </a>
+        <div class="flex items-center gap-2">
+            <button onclick="Android.openProfile()" class="material-symbols-outlined text-black">account_circle</button>
+        </div>
+    </header>
 
-            <!-- Vendor Onboarding Section -->
-            <div class="mt-8 p-8 bg-primary rounded-3xl shadow-xl text-white">
-                <h3 class="font-headline-sm mb-2">Are you a professional?</h3>
-                <p class="mb-6 opacity-90 font-body-md">Join our elite network of Kenyan photographers and planners. Upload your work and set your own prices.</p>
-                <button onclick="Android.openAddListing()" class="w-full py-4 bg-white text-primary rounded-xl font-bold text-lg hover:scale-105 transition-transform active:scale-95 shadow-lg">Add My Work &amp; Pricing</button>
+    <main class="pt-20 pb-24 px-4 max-w-4xl mx-auto">
+        <!-- Community Section -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold text-black mb-1">Community Professionals</h2>
+            <p class="text-gray-600 mb-6">Real professionals from our Kenyan community.</p>
+
+            <div id="realListingContainer" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="col-span-full py-12 text-center text-gray-400">Loading listings...</div>
             </div>
+        </section>
 
-            <!-- Network API Test Section -->
-            <div class="mt-8 p-6 bg-white rounded-3xl shadow-sm border border-outline-variant/20">
-                <h3 class="font-headline-sm text-on-surface mb-2">Live Nairobi Weather</h3>
-                <p class="text-on-surface-variant mb-4 font-body-md">Get current weather in Nairobi via Open-Meteo API.</p>
-                <div id="weatherDisplay" class="text-primary font-bold text-xl mb-4 hidden"></div>
-                <button onclick="Android.fetchWeather()" class="w-full py-3 border-2 border-primary text-primary rounded-xl font-label-lg hover:bg-primary/5 transition-all">Get Weather Status</button>
-            </div>
+        <!-- Become a Vendor -->
+        <section class="mb-12 p-8 bg-black rounded-3xl text-white text-center">
+            <h3 class="text-xl font-bold mb-2">Are you a professional?</h3>
+            <p class="mb-6 text-gray-300">Join our elite network of Kenyan photographers. Upload your work and set your prices in KSh.</p>
+            <button onclick="Android.openAddListing()" class="w-full py-4 bg-blue-600 text-white rounded-xl font-bold hover:bg-blue-700 transition-all">Add My Work & Pricing</button>
+        </section>
 
-            <!-- Vendor Onboarding Section -->
-            <div class="mt-8 p-8 bg-primary rounded-3xl shadow-xl text-white">
-                <h3 class="font-headline-sm mb-2">Are you a professional?</h3>
-                <p class="mb-6 opacity-90 font-body-md">Join our elite network of Kenyan photographers and planners. Upload your work and set your own prices.</p>
-                <button onclick="Android.openAddListing()" class="w-full py-4 bg-white text-primary rounded-xl font-bold text-lg hover:scale-105 transition-transform active:scale-95 shadow-lg">Add My Work &amp; Pricing</button>
-            </div>
+        <!-- Weather Section -->
+        <section class="mb-12 p-6 bg-blue-50 rounded-3xl border border-blue-100">
+            <h3 class="text-lg font-bold text-blue-900 mb-2">Nairobi Weather Status</h3>
+            <div id="weatherDisplay" class="text-blue-700 font-bold text-xl mb-4 hidden"></div>
+            <button onclick="Android.fetchWeather()" class="px-6 py-2 bg-white border border-blue-200 text-blue-700 rounded-full font-semibold hover:bg-blue-100 transition-all">Update Weather</button>
+        </section>
+    </main>
 
-            <!-- Network API Test Section -->
-            <div class="mt-8 p-6 bg-white rounded-3xl shadow-sm border border-outline-variant/20">
-                <h3 class="font-headline-sm text-on-surface mb-2">Network Status</h3>
-                <div id="networkStatus" class="px-4 py-2 rounded-lg text-sm font-bold inline-block mb-4">Checking connection...</div>
+    <!-- Navigation -->
+    <nav class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-100 flex justify-around items-center py-3">
+        <a href="index.html" class="flex flex-col items-center text-gray-400"><span class="material-symbols-outlined">home</span><span class="text-xs">Home</span></a>
+        <a href="#" class="flex flex-col items-center text-blue-700"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">search</span><span class="text-xs font-bold">Explore</span></a>
+        <a onclick="Android.openProfile()" class="flex flex-col items-center text-gray-400"><span class="material-symbols-outlined">person</span><span class="text-xs">Profile</span></a>
+    </nav>
 
-                <h3 class="font-headline-sm text-on-surface mb-2">Vendor Announcements</h3>
-                <p class="text-on-surface-variant mb-4 font-body-md">Tap below to fetch real-time updates from our cloud API.</p>
-                <div id="apiDataList" class="space-y-4 mb-6"></div>
-                <button id="fetchBtn" onclick="Android.fetchApiData()" class="w-full py-3 border-2 border-primary text-primary rounded-xl font-label-lg hover:bg-primary/5 transition-all">Update Announcements</button>
-            </div>
+    <script>
+        let currentUserId = "";
 
-</div>
-
-<script>
-    function showNetworkStatus(isOnline) {
-        const statusDiv = document.getElementById('networkStatus');
-        if (isOnline) {
-            statusDiv.innerText = "● Online";
-            statusDiv.className = "px-4 py-2 rounded-lg text-sm font-bold inline-block mb-4 bg-green-100 text-green-700";
-        } else {
-            statusDiv.innerText = "○ Offline";
-            statusDiv.className = "px-4 py-2 rounded-lg text-sm font-bold inline-block mb-4 bg-red-100 text-red-700";
+    window.onload = () => {
+        if (typeof Android !== 'undefined') {
+            Android.fetchListings();
         }
+    };
+
+    function updateAuthUI(isLoggedIn, userId) {
+        currentUserId = userId || "";
+        console.log("Explore: Current User ID is " + currentUserId);
     }
 
-    function displayApiData(data) {
-        const container = document.getElementById('apiDataList');
-        container.innerHTML = ''; // Clear old
-        data.forEach(item => {
+    function displayRealListings(listings) {
+        const container = document.getElementById('realListingContainer');
+        if (!container) return;
+        container.innerHTML = '';
+
+        if (!listings || listings.length === 0) {
+            container.innerHTML = '<div class="col-span-full p-12 text-center bg-gray-50 rounded-3xl border border-dashed border-gray-300 text-gray-500">No listings yet. Be the first to upload!</div>';
+            return;
+        }
+
+        listings.forEach(item => {
             const div = document.createElement('div');
-            div.className = "p-4 bg-surface-container-low rounded-xl border border-outline-variant/30";
+            div.className = "bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100 relative";
+            const imageSrc = item.imageBase64 ? `data:image/jpeg;base64,${item.imageBase64}` : 'https://via.placeholder.com/400x300?text=FABI+Pro';
+
+            // Show delete button ONLY if this user created this listing
+            const isOwner = item.userId === currentUserId;
+            const deleteBtn = isOwner ? `
+                <button onclick="deleteListing('${item.listingId}')" class="absolute top-3 right-3 bg-red-600 text-white w-10 h-10 rounded-full shadow-lg flex items-center justify-center hover:bg-red-700 active:scale-90 transition-all z-20">
+                    <span class="material-symbols-outlined text-sm">delete</span>
+                </button>
+            ` : '';
+
             div.innerHTML = `
-                <h4 class="font-bold text-primary mb-1">${item.title}</h4>
-                <p class="text-sm text-on-surface-variant">${item.body.substring(0, 80)}...</p>
+                ${deleteBtn}
+                <div class="h-48 bg-gray-100 overflow-hidden">
+                    <img src="${imageSrc}" class="w-full h-full object-cover" alt="${item.name}">
+                </div>
+                <div class="p-5">
+                    <div class="flex justify-between items-center mb-1">
+                        <h3 class="font-bold text-lg text-black">${item.name}</h3>
+                        <span class="text-blue-700 font-bold">${item.price}</span>
+                    </div>
+                    <p class="text-gray-500 text-sm mb-3">${item.location} • ${item.category}</p>
+                    <p class="text-gray-700 text-sm line-clamp-2 mb-4">${item.description}</p>
+                    <button onclick="bookVendor('${item.name}', '${item.price}', '${item.location}')" class="w-full py-2.5 bg-blue-700 text-white rounded-lg font-bold hover:bg-blue-800 transition-all">Book Now</button>
+                </div>
             `;
             container.appendChild(div);
         });
     }
-    function updateWeatherUI(temp) {
-        const display = document.getElementById('weatherDisplay');
-        display.innerText = "Current Nairobi Temp: " + temp;
-        display.classList.remove('hidden');
-    }
-</script>
-</section>
-<!-- Dynamic Content (Asymmetric Layout Demo) -->
-<section class="mt-section-gap mb-12">
-<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
-<div class="md:col-span-5">
-<span class="font-label-lg text-primary uppercase tracking-widest mb-4 block">Tailored for You</span>
-<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-6 leading-tight">Find the perfect creative for your next gala.</h2>
-<p class="text-on-surface-variant font-body-lg mb-8">Our AI-driven matching engine connects you with the top 1% of creative professionals based on your specific venue, lighting needs, and event style.</p>
-<div class="flex items-center gap-4">
-<button class="px-8 py-4 bg-primary text-white rounded-full font-label-lg shadow-lg hover:shadow-primary/30 transition-all active:scale-95">Start Matching</button>
-<button class="flex items-center gap-2 text-on-surface font-label-lg hover:text-primary transition-colors">
-                            How it works
-                            <span class="material-symbols-outlined">arrow_forward</span>
-</button>
-</div>
-</div>
-<div class="md:col-span-7 relative">
-<div class="grid grid-cols-2 gap-4">
-<div class="space-y-4 pt-12">
-<div class="rounded-3xl overflow-hidden shadow-xl aspect-[3/4]">
-<img alt="Elite Event 1" class="w-full h-full object-cover" data-alt="A bird's eye view of a lavishly decorated corporate gala dinner with hundreds of guests. The lighting is dominated by deep violets and cool blues, creating a high-energy, sophisticated atmosphere. Circular tables are perfectly arranged with crystal glassware and silver accents reflecting the ambient light. The image captures the scale and professional coordination of a top-tier event." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBl0GmUveVreiUiLZNAzqaUyJXH6lMKTbjghBn6WG-YOHRvTOUXfJFEpNL0ra1yzayTzl-uJz4dXARPDZMW9HGL8JTNQHElcvloNI5qE4VgeCZKyC4ipFUFMwyvysLvXdmrFSgyE0ROwn1g_XIH95ZIph3pJj95oR31k-HhAfX4-3LB5mLnjoCdqdCsKDhI2zYI5BgU_dZAtg_czUN_PZDjrgJ1ZvNYWSXFCtoGzPVrg9fYYN9Y46hZFtRPFn7CdGBQoxx2zTnEN1s"/>
-</div>
-</div>
-<div class="space-y-4">
-<div class="rounded-3xl overflow-hidden shadow-xl aspect-[3/4]">
-<img alt="Elite Event 2" class="w-full h-full object-cover" data-alt="A dynamic, low-angle shot of a high-end corporate presentation featuring a professional speaker on a brightly lit stage with a large LED screen in the background. The audience is in silhouette, emphasizing the focus on the presenter. The color scheme is clean and corporate, featuring whites, blues, and professional grays, symbolizing corporate excellence and technological integration." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkdbyMLnh44_GXExhCRVFRyPi76VfZ7sQiw71kLLNjC0Q8V-tsfJ3Bnv_B8lwokDPMPFn46MFK8fsZ5ssAghUxm4E5_KE05VT4HGJZra2UpenxtIV7Jw1dqosv7wVWPCMkaRWkaIMZxlkFhW2LoOsvSXGwv6b7zhllMzt_NumJaxibMmOX_wsKHA-Afc7bJqmQ8T9jpx3xxln0nmSmtqFf-WNo38NMfVWqZciJRl7uJiP-Ds2LUDbpHtTDB3rebzbC1yBiNPw2EO4"/>
-</div>
-<div class="rounded-3xl overflow-hidden shadow-xl aspect-square">
-<img alt="Elite Event 3" class="w-full h-full object-cover" data-alt="An artistic shot of event lighting technicians working with professional spot lights at a premium venue. The beams of light cut through a light haze, creating dramatic rays of light against a dark background. This image highlights the technical artistry and logistical excellence behind high-end events, using a palette of deep blacks and sharp electric blues." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBB1FyGdJfOEyPoj6gwSUb_nnvprfGPWEnU9lJo3mcEb5xwTWhf6b-pHD_Ri3PEO0z2C2Ld3CoG29uJ0IGJjr4pC8sOcEBPJ1FUeNDMIv3SSXRw-1Vf_k3ncIhJ8W6rVgphQbGsEz26lDLpYkewJiSadVq625n2LAeDtScspYNLlHhHLLaOcgfAwQe357h8CR78AZFaPWIYqd_anlW1O0HH-GCIlnxsCc4tdPJ_CpZdb9IBtHhLJHRxWmD4ogWkfcSK0B8PD__CUWg"/>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-</main>
-<!-- BottomNavBar -->
-<nav class="fixed bottom-0 left-0 w-full z-50 bg-surface/80 backdrop-blur-lg border-t border-outline-variant/10 shadow-[0_-4px_32px_rgba(0,0,0,0.04)] rounded-t-xl flex justify-around items-center px-4 py-3 pb-safe">
-<a class="flex flex-col items-center justify-center text-secondary px-3 py-1 hover:text-primary transition-colors active:scale-90 duration-200" href="#">
-<span class="material-symbols-outlined">home</span>
-<span class="font-label-sm text-label-sm uppercase tracking-wider mt-1">Home</span>
-</a>
-<a class="flex flex-col items-center justify-center bg-primary-container/20 text-primary rounded-xl px-3 py-1 active:scale-90 transition-transform duration-200" href="#">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">search</span>
-<span class="font-label-sm text-label-sm uppercase tracking-wider mt-1">Explore</span>
-</a>
-<a class="flex flex-col items-center justify-center text-secondary px-3 py-1 hover:text-primary transition-colors active:scale-90 duration-200" href="#">
-<span class="material-symbols-outlined">calendar_today</span>
-<span class="font-label-sm text-label-sm uppercase tracking-wider mt-1">Bookings</span>
-</a>
-<a class="flex flex-col items-center justify-center text-secondary px-3 py-1 hover:text-primary transition-colors active:scale-90 duration-200" href="#">
-<span class="material-symbols-outlined">person</span>
-<span class="font-label-sm text-label-sm uppercase tracking-wider mt-1">Profile</span>
-</a>
-</nav>
-<!-- Contextual FAB -->
-<button class="fixed bottom-24 right-6 w-14 h-14 bg-primary text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-40">
-<span class="material-symbols-outlined text-[28px]">add</span>
-</button>
-<script>
-        // Simple Micro-interaction: Active category state toggle
-        document.querySelectorAll('.hide-scrollbar button').forEach(btn => {
-            btn.addEventListener('click', function() {
-                document.querySelectorAll('.hide-scrollbar button').forEach(b => {
-                    b.classList.remove('bg-primary-container', 'text-on-primary-container');
-                    b.classList.add('bg-surface-container-high', 'text-on-surface-variant');
-                    const icon = b.querySelector('.material-symbols-outlined');
-                    if (icon) icon.style.fontVariationSettings = "'FILL' 0";
-                });
-                this.classList.add('bg-primary-container', 'text-on-primary-container');
-                this.classList.remove('bg-surface-container-high', 'text-on-surface-variant');
-                const activeIcon = this.querySelector('.material-symbols-outlined');
-                if (activeIcon) activeIcon.style.fontVariationSettings = "'FILL' 1";
-            });
-        });
 
-        // Search bar focus effect
-        const searchInput = document.querySelector('input[type="text"]');
-        searchInput.addEventListener('focus', () => {
-            searchInput.parentElement.classList.add('scale-[1.02]');
-        });
-        searchInput.addEventListener('blur', () => {
-            searchInput.parentElement.classList.remove('scale-[1.02]');
-        });
+    function deleteListing(id) {
+        if (confirm("Delete this listing permanently?")) {
+            if (typeof Android !== 'undefined') {
+                Android.deleteListing(id);
+            }
+        }
+    }
+
+        function bookVendor(name, price, location) {
+            if (typeof Android !== 'undefined') {
+                const date = new Date().toLocaleString();
+                Android.sendBookingEmail(name, price, location, date);
+            }
+            window.location.href = "confirmed.html";
+        }
+
+        function updateWeatherUI(temp) {
+            const display = document.getElementById('weatherDisplay');
+            display.innerText = "Nairobi is currently " + temp;
+            display.classList.remove('hidden');
+        }
+
+        function showNetworkStatus(isOnline) {
+            console.log("Network status:", isOnline);
+        }
     </script>
-</body></html>
+</body>
+</html>

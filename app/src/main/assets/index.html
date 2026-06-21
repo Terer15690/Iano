@@ -1,422 +1,131 @@
-<!DOCTYPE html><html class="scroll-smooth" lang="en" style=""><head>
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title class="">FABI | Elite Event Services</title>
+    <title>FABI | Kenyan Event Services</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-
-<script>
-    function updateAuthUI(isLoggedIn) {
-        const exploreContainer = document.getElementById('exploreContainer');
-        const authPromptContainer = document.getElementById('authPromptContainer');
-        const navExplore = document.getElementById('navExplore');
-        const guestHeader = document.getElementById('guestHeaderActions');
-        const userHeader = document.getElementById('userHeaderActions');
-        const heroJoin = document.getElementById('heroJoinBtn');
-
-        if (isLoggedIn) {
-            exploreContainer.classList.remove('hidden');
-            authPromptContainer.classList.add('hidden');
-            navExplore.classList.remove('hidden');
-            guestHeader.classList.add('hidden');
-            userHeader.classList.remove('hidden');
-            heroJoin.classList.add('hidden');
-        } else {
-            exploreContainer.classList.add('hidden');
-            authPromptContainer.classList.remove('hidden');
-            navExplore.classList.add('hidden');
-            guestHeader.classList.remove('hidden');
-            userHeader.classList.add('hidden');
-            heroJoin.classList.remove('hidden');
-        }
-    }
-</script>
-    <link href="https://fonts.googleapis.com" rel="preconnect">
-    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@100..900&amp;family=Plus+Jakarta+Sans:wght@100..900&amp;display=swap" rel="stylesheet">
-    <style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-            display: inline-block;
-            line-height: 1;
-            text-transform: none;
-            letter-spacing: normal;
-            word-wrap: normal;
-            white-space: nowrap;
-            direction: ltr;
-        }
-        .glass-card {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-        }
-        .gradient-text {
-            background: linear-gradient(135deg, #630ed4 0%, #732ee4 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .section-padding {
-            padding-top: 120px;
-            padding-bottom: 120px;
-        }
-        @media (max-width: 768px) {
-            .section-padding {
-                padding-top: 64px;
-                padding-bottom: 64px;
-            }
-        }
-    </style>
     <script id="tailwind-config">
         tailwind.config = {
-            darkMode: "class",
             theme: {
                 extend: {
-                    "colors": {
+                    colors: {
                         "primary": "#0056b3",
-                        "on-primary": "#ffffff",
-                        "primary-container": "#000000",
-                        "on-primary-container": "#ffffff",
                         "background": "#ffffff",
                         "on-background": "#000000",
                         "surface": "#ffffff",
                         "on-surface": "#000000",
-                        "outline-variant": "#e0e0e0",
-                        "secondary": "#333333"
-                    },
-                    "borderRadius": {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "full": "9999px"
-                    },
-                    "spacing": {
-                        "section-gap": "120px",
-                        "margin-mobile": "16px",
-                        "container-max": "1280px",
-                        "base": "8px",
-                        "margin-desktop": "64px",
-                        "gutter": "24px"
-                    },
-                    "fontFamily": {
-                        "headline-sm": ["Playfair Display"],
-                        "label-lg": ["Plus Jakarta Sans"],
-                        "headline-lg": ["Playfair Display"],
-                        "label-sm": ["Plus Jakarta Sans"],
-                        "body-lg": ["Plus Jakarta Sans"],
-                        "headline-lg-mobile": ["Playfair Display"],
-                        "display-lg": ["Playfair Display"],
-                        "body-md": ["Plus Jakarta Sans"],
-                        "headline-md": ["Playfair Display"]
-                    },
-                    "fontSize": {
-                        "headline-sm": ["24px", { "lineHeight": "1.4", "fontWeight": "600" }],
-                        "label-lg": ["14px", { "lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600" }],
-                        "headline-lg": ["40px", { "lineHeight": "1.2", "fontWeight": "700" }],
-                        "label-sm": ["12px", { "lineHeight": "1.2", "fontWeight": "500" }],
-                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
-                        "headline-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
-                        "display-lg": ["56px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
-                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
-                        "headline-md": ["32px", { "lineHeight": "1.3", "fontWeight": "600" }]
+                        "outline-variant": "#e0e0e0"
                     }
-                },
-            },
+                }
+            }
         }
     </script>
-
-<script>
-    function updateAuthUI(isLoggedIn) {
-        const exploreContainer = document.getElementById('exploreContainer');
-        const authPromptContainer = document.getElementById('authPromptContainer');
-        const navExplore = document.getElementById('navExplore');
-        const guestHeader = document.getElementById('guestHeaderActions');
-        const userHeader = document.getElementById('userHeaderActions');
-        const heroJoin = document.getElementById('heroJoinBtn');
-
-        if (isLoggedIn) {
-            exploreContainer.classList.remove('hidden');
-            authPromptContainer.classList.add('hidden');
-            navExplore.classList.remove('hidden');
-            guestHeader.classList.add('hidden');
-            userHeader.classList.remove('hidden');
-            heroJoin.classList.add('hidden');
-        } else {
-            exploreContainer.classList.add('hidden');
-            authPromptContainer.classList.remove('hidden');
-            navExplore.classList.add('hidden');
-            guestHeader.classList.remove('hidden');
-            userHeader.classList.add('hidden');
-            heroJoin.classList.remove('hidden');
-        }
-    }
-</script>
+    <style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
 </head>
-<body class="bg-background text-on-surface font-body-md selection:bg-primary/20">
-<!-- TopAppBar Shell -->
-<header class="fixed top-0 w-full z-50 bg-surface/70 dark:bg-inverse-surface/70 backdrop-blur-md border-b border-outline-variant/20 flex justify-between items-center px-4 h-16 md:px-margin-desktop">
-    <div class="flex items-center gap-4">
-        <button class="material-symbols-outlined text-primary dark:text-inverse-primary hover:opacity-80 transition-opacity active:scale-95 transition-transform" data-icon="menu">menu</button>
-        <a href="index.html" class="font-display-lg text-headline-sm tracking-tight text-primary dark:text-inverse-primary">FABI</a>
-    </div>
-    <div class="hidden md:flex gap-8">
-        <a class="font-label-lg text-primary dark:text-inverse-primary hover:opacity-80 transition-opacity" href="#">Home</a>
-        <a class="font-label-lg text-on-surface-variant dark:text-outline-variant hover:opacity-80 transition-opacity" href="#">Explore</a>
-        <a class="font-label-lg text-on-surface-variant dark:text-outline-variant hover:opacity-80 transition-opacity" href="#">Bookings</a>
-        <a class="font-label-lg text-on-surface-variant dark:text-outline-variant hover:opacity-80 transition-opacity" href="#">Profile</a>
-    </div>
-    <div id="guestHeaderActions" class="flex items-center gap-2">
-        <button onclick="Android.openRegister()" class="bg-primary text-on-primary px-4 py-2 rounded-full font-label-lg text-sm transition-all active:scale-95 shadow-md">Join Now</button>
-        <button class="material-symbols-outlined text-primary dark:text-inverse-primary hover:opacity-80 transition-opacity active:scale-95 transition-transform" data-icon="notifications">notifications</button>
-    </div>
-    <div id="userHeaderActions" class="hidden flex items-center gap-2">
-        <button onclick="Android.openProfile()" class="material-symbols-outlined text-primary hover:opacity-80">account_circle</button>
-        <button class="material-symbols-outlined text-primary dark:text-inverse-primary" data-icon="notifications">notifications</button>
-    </div>
-</header>
-<main class="overflow-x-hidden">
-    <!-- Hero Section -->
-    <section class="relative min-h-screen flex items-center pt-16 transition-all duration-1000 opacity-100 translate-y-0">
-        <div class="absolute inset-0 z-0">
-            <img class="w-full h-full object-cover opacity-20" alt="A sophisticated, high-end gala event in a grand ballroom with crystal chandeliers, elegant floral centerpieces, and warm ambient lighting." src="https://lh3.googleusercontent.com/aida/AP1WRLspGDfI_UId0rq0wsuG9OE3N6L0H6mGHjO9-WosEACiJhAaXrOACSM9bd14q4QvfjT8-Rtz4XgV8ahA4CKXKbNjQe3j46rsQDA44nuN1S7IIG5Pu0qcqdF5uHScDoh9eCyC_weny47em6Y_SjDggN4ikZ9pxnRvQYG5Wbx1QL2ahA7tV3XxdtvCocH3M1FPaENf3Ax9dHUkqPGsIf-lKovQpuOouaCLpyVnF3JkdG-y8WChyubgNZszLac">
-            <div class="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background"></div>
+<body class="bg-white text-black font-sans">
+    <!-- Header -->
+    <header class="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 flex justify-between items-center px-4 h-16">
+        <h1 class="text-2xl font-bold text-blue-700">FABI</h1>
+        <div class="flex items-center gap-2">
+            <div id="guestHeaderActions" class="flex gap-2">
+                <button onclick="Android.openRegister()" class="bg-blue-700 text-white px-5 py-2 rounded-full font-bold text-sm shadow-md">Join Now</button>
+            </div>
+            <div id="userHeaderActions" class="hidden flex items-center gap-2">
+                <button onclick="Android.openProfile()" class="material-symbols-outlined text-black text-3xl">account_circle</button>
+            </div>
         </div>
-        <div class="container mx-auto px-4 md:px-margin-desktop relative z-10">
-            <div class="max-w-4xl">
-                <h1 class="font-display-lg text-headline-lg-mobile md:text-display-lg mb-6 leading-tight">
-                    Elevate Your Events with <span class="gradient-text">Elite Talent</span>
-                </h1>
-                <p class="font-body-lg text-on-surface-variant mb-6 max-w-2xl">
-                    Connect with the world's most sought-after photographers, planners, and creators. A curated marketplace for those who demand excellence in every detail.
-                </p>
-                <div id="heroJoinBtn">
-                    <button onclick="Android.openRegister()" class="mb-12 bg-primary-container text-on-primary px-10 py-4 rounded-full font-label-lg text-lg hover:scale-105 transition-transform shadow-xl active:scale-95">Get Started - Join Now</button>
-                </div>
-                <!-- Search/Filter Bar -->
-                <div id="exploreContainer" class="hidden">
-                    <div class="glass-card p-2 md:p-4 rounded-full border border-outline-variant/30 shadow-2xl flex flex-col md:flex-row gap-2 max-w-3xl">
-                        <div class="flex-1 flex items-center px-4 gap-3 border-b md:border-b-0 md:border-r border-outline-variant/20 py-2 md:py-0">
-                            <span class="material-symbols-outlined text-primary" data-icon="search">search</span>
-                            <input class="bg-transparent border-none focus:ring-0 w-full font-body-md text-on-surface placeholder:text-outline" aria-label="Who are you looking for?" placeholder="Who are you looking for?" type="text">
-                        </div>
-                        <div class="flex-1 flex items-center px-4 gap-3 py-2 md:py-0">
-                            <span class="material-symbols-outlined text-primary" data-icon="event">event</span>
-                            <input class="bg-transparent border-none focus:ring-0 w-full font-body-md text-on-surface placeholder:text-outline" aria-label="Select event date" placeholder="Select event date" type="text">
-                        </div>
-                        <button onclick="Android.openExplore()" class="bg-primary hover:bg-primary-container text-on-primary px-8 py-3 rounded-full font-label-lg transition-all active:scale-95 shadow-lg shadow-primary/20 flex items-center justify-center">Explore</button>
-                    </div>
-                </div>
+    </header>
 
-                <div id="authPromptContainer" class="mt-8">
-                    <p class="text-on-surface-variant mb-4">Log in to unlock exclusive access to elite talent.</p>
-                    <button onclick="Android.openLogin()" class="bg-primary-container text-on-primary px-10 py-4 rounded-full font-label-lg text-lg shadow-xl active:scale-95">Sign In to Explore</button>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Service Categories Bento -->
-    <section class="section-padding bg-surface-container-low transition-all duration-1000 opacity-100 translate-y-0">
-        <div class="container mx-auto px-4 md:px-margin-desktop">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
-                <div>
-                    <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg mb-4">Master Your Vision</h2>
-                    <p class="font-body-md text-on-surface-variant max-w-xl">From cinematic storytelling to rhythmic beats, discover partners who transform moments into lasting legacies.</p>
-                </div>
-                <a class="font-label-lg text-primary flex items-center gap-2 hover:gap-4 transition-all" href="#">
-                    View All Services <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
-                </a>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-gutter h-auto md:h-[600px]">
-                <div class="md:col-span-2 relative group overflow-hidden rounded-xl shadow-lg">
-                    <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Professional photographer capturing a luxury wedding." src="https://lh3.googleusercontent.com/aida/AP1WRLswNlwP06vtbcZZvjJQ0HQXfvD5N9oL0P3gmF0JK-b5ROHc1-phbOeGpDvzf5TD89ZMZx2rqRY3rWyQnLNCIdG0ZpFHmeUzHe3Wt8apTJsvYVd3pDKqUzIATU87l2poEuo6j-ggswBjbGtdiKadNoBkbk1sQ965uPRQuLRRhXyud-mmiHqk5BmTY-TG4y93Y8UGOZde0-11J5lKQx5g2fb6QE0eKiOPsK4NRYBnHeSR5A5iqDnZKuqaEDs">
-                    <div class="absolute inset-0 bg-gradient-to-t from-on-background/80 to-transparent flex flex-col justify-end p-8">
-                        <span class="text-on-primary/60 font-label-sm uppercase tracking-widest mb-2">Visual Artistry</span>
-                        <h3 class="text-on-primary font-headline-sm">Photographers</h3>
-                    </div>
-                </div>
-                <div class="md:col-span-1 relative group overflow-hidden rounded-xl shadow-lg">
-                    <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Dynamic DJ at a high-end event." src="https://lh3.googleusercontent.com/aida/AP1WRLtv_W9e4eItiqkEOgbBqp7QYPWuS-r2JDdXiI1xBRc4j0Xilq3Ctvvng_2UURnwJNNpPRkjHYhH3DbtyLf63lfBI9P88_OrYpLLwWDo0Bk0fdL5UVJbEcBoIxJE8pvi4RCVjBEyjdvhSqy1wabjJqi1FR246xH7alWm8zU7CzWWRW5G7FE-3bT__aoFhBe27_mVmXWA5pc2_uIs2RmuHg9LEcT04R4pHgr2YTFfsKwdrY3XoQrkGUIsztk">
-                    <div class="absolute inset-0 bg-gradient-to-t from-on-background/80 to-transparent flex flex-col justify-end p-8">
-                        <span class="text-on-primary/60 font-label-sm uppercase tracking-widest mb-2">Soundscapes</span>
-                        <h3 class="text-on-primary font-headline-sm">DJs &amp; Musicians</h3>
-                    </div>
-                </div>
-                <div class="md:col-span-1 relative group overflow-hidden rounded-xl shadow-lg">
-                    <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt="Meticulously arranged table setting at a luxury event." src="https://lh3.googleusercontent.com/aida/AP1WRLsALeY5pEdMRSN2cti9ZPAa92YUpdBqUnerDek9H2sTh269axyHCgWwk2WBr0AvYtRviCEYIdsRaYzaBzWIH0wYKVUekwBXC187-Q3yOItb-8PJMd6O_eBTGdaT0rwPAXivLAvg14jruucCT_UvGtudGtQFuJUkNlAaTZTPAdf9xbzpams9PBVf7syBv82Kw2R2QpPO_4dxMFTYLyQX_aHbUrz14DE88qWOguIvYDDk2Wusz_PmOeaf-0w">
-                    <div class="absolute inset-0 bg-gradient-to-t from-on-background/80 to-transparent flex flex-col justify-end p-8">
-                        <span class="text-on-primary/60 font-label-sm uppercase tracking-widest mb-2">Coordination</span>
-                        <h3 class="text-on-primary font-headline-sm">Planners</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- How It Works Section -->
-    <section class="section-padding bg-background relative transition-all duration-1000 opacity-100 translate-y-0">
-        <div class="container mx-auto px-4 md:px-margin-desktop">
-            <div class="text-center mb-24">
-                <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg mb-4">Your Journey to Perfection</h2>
-                <p class="font-body-md text-on-surface-variant max-w-2xl mx-auto">Seamlessly navigate from initial inspiration to the final toast with our streamlined booking process.</p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-16 relative">
-                <!-- Progress Line (Desktop) -->
-                <div class="hidden md:block absolute top-12 left-[15%] right-[15%] h-[1px] bg-outline-variant/30 z-0"></div>
-                <!-- Step 1 -->
-                <div class="relative z-10 flex flex-col items-center text-center">
-                    <div class="w-24 h-24 rounded-full bg-primary-container/10 border-4 border-background flex items-center justify-center mb-8 shadow-xl">
-                        <span class="material-symbols-outlined text-primary text-4xl" data-icon="travel_explore">travel_explore</span>
-                    </div>
-                    <h3 class="font-headline-sm mb-4">Discover</h3>
-                    <p class="font-body-md text-on-surface-variant px-4">Browse our curated selection of verified elite talent across all creative categories.</p>
-                </div>
-                <!-- Step 2 -->
-                <div class="relative z-10 flex flex-col items-center text-center">
-                    <div class="w-24 h-24 rounded-full bg-primary-container/10 border-4 border-background flex items-center justify-center mb-8 shadow-xl">
-                        <span class="material-symbols-outlined text-primary text-4xl" data-icon="verified_user">verified_user</span>
-                    </div>
-                    <h3 class="font-headline-sm mb-4">Book</h3>
-                    <p class="font-body-md text-on-surface-variant px-4">Secure your dates with transparent pricing and direct communication with professionals.</p>
-                </div>
-                <!-- Step 3 -->
-                <div class="relative z-10 flex flex-col items-center text-center">
-                    <div class="w-24 h-24 rounded-full bg-primary-container/10 border-4 border-background flex items-center justify-center mb-8 shadow-xl">
-                        <span class="material-symbols-outlined text-primary text-4xl" data-icon="celebration">celebration</span>
-                    </div>
-                    <h3 class="font-headline-sm mb-4">Celebrate</h3>
-                    <p class="font-body-md text-on-surface-variant px-4">Focus on the moment while our elite partners bring your creative vision to life.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- CTA Section -->
-    <section class="section-padding px-4 md:px-margin-desktop mb-16 md:mb-32 transition-all duration-1000 opacity-100 translate-y-0">
-        <div class="container mx-auto">
-            <div class="relative rounded-[2rem] overflow-hidden bg-inverse-surface py-24 px-8 md:px-24 text-center">
+    <main class="pt-20">
+        <!-- Hero Section -->
+        <section class="px-4 py-20 bg-blue-50 text-center">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-black mb-6 leading-tight">Elevate Your Events with <span class="text-blue-700">Elite Talent</span></h1>
+            <p class="text-lg text-gray-600 mb-12 max-w-2xl mx-auto">Connect with Kenya's sought-after photographers and planners. A marketplace for excellence in every detail.</p>
 
-                <div class="relative z-10">
-                    <h2 class="text-on-primary font-display-lg text-headline-lg-mobile md:text-headline-lg mb-8 max-w-3xl mx-auto">Ready to craft an unforgettable experience?</h2>
-                    <div class="flex flex-col md:flex-row gap-6 justify-center items-center">
-                        <a href="javascript:void(0)" onclick="Android.openRegister()" class="bg-primary-container text-on-primary px-12 py-5 rounded-full font-label-lg text-lg hover:scale-105 transition-transform shadow-2xl shadow-primary/40 active:scale-95 flex items-center justify-center">Join Now</a>
-                        <button class="border border-on-primary/30 text-on-primary px-12 py-5 rounded-full font-label-lg text-lg hover:bg-on-primary/10 transition-colors backdrop-blur-sm">
-                            View Portfolio
-                        </button>
-                    </div>
+            <div id="heroJoinBtn">
+                <button onclick="Android.openRegister()" class="bg-blue-700 text-white px-12 py-5 rounded-full font-bold text-xl shadow-xl hover:bg-blue-800 transition-all">Get Started Today</button>
+            </div>
+
+            <!-- Authenticated View -->
+            <div id="exploreContainer" class="hidden max-w-3xl mx-auto">
+                <div class="bg-white p-2 rounded-full shadow-2xl border border-blue-100 flex flex-col md:flex-row gap-2">
+                    <input class="flex-1 px-6 py-4 bg-transparent border-none focus:ring-0 text-black placeholder:text-gray-400" placeholder="Who are you looking for?" type="text">
+                    <button onclick="Android.openExplore()" class="bg-blue-700 text-white px-10 py-4 rounded-full font-bold shadow-lg">Explore Now</button>
                 </div>
             </div>
-        </div>
-    </section>
-</main>
-<!-- BottomNavBar Shell -->
-<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 py-3 pb-safe bg-surface/80 dark:bg-inverse-surface/80 backdrop-blur-lg border-t border-outline-variant/10 shadow-[0_-4px_32px_rgba(0,0,0,0.04)] z-50 rounded-t-xl">
-    <div class="flex flex-col items-center justify-center bg-primary-container/20 text-primary dark:text-inverse-primary rounded-xl px-3 py-1 active:scale-90 transition-transform duration-200 cursor-pointer">
-        <span class="material-symbols-outlined" data-icon="home">home</span>
-        <span class="font-label-sm text-label-sm uppercase tracking-wider">Home</span>
-    </div>
-    <a id="navExplore" href="javascript:void(0)" onclick="Android.openExplore()" class="hidden flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim px-3 py-1 hover:text-primary transition-colors active:scale-90 transition-transform duration-200 cursor-pointer">
-        <span class="material-symbols-outlined" data-icon="search">search</span>
-        <span class="font-label-sm text-label-sm uppercase tracking-wider">Explore</span>
-    </a>
-    <a href="javascript:void(0)" onclick="Android.openProfile()" class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim px-3 py-1 hover:text-primary transition-colors active:scale-90 transition-transform duration-200 cursor-pointer"><span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span><span class="font-label-sm text-label-sm uppercase tracking-wider">Bookings</span></a>
-    <a href="javascript:void(0)" onclick="Android.openProfile()" class="flex flex-col items-center justify-center text-secondary dark:text-secondary-fixed-dim px-3 py-1 hover:text-primary transition-colors active:scale-90 transition-transform duration-200 cursor-pointer"><span class="material-symbols-outlined" data-icon="person">person</span><span class="font-label-sm text-label-sm uppercase tracking-wider">Profile</span></a>
-</nav>
-<footer class="bg-surface-container py-16 px-4 md:px-margin-desktop text-on-surface-variant">
-    <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 border-b border-outline-variant/20 pb-16">
-        <div class="md:col-span-1">
-            <a href="index.html" class="font-display-lg text-headline-sm tracking-tight text-primary mb-6 block">FABI</a>
-            <p class="font-body-md text-sm leading-relaxed">The premier destination for sourcing elite creative talent for the world's most exclusive events.</p>
-        </div>
-        <div>
-            <h4 class="font-label-lg text-on-surface mb-6 uppercase tracking-wider">Explore</h4>
-            <ul class="space-y-4 font-body-md text-sm">
-                <li class=""><a class="hover:text-primary transition-colors" href="#">Categories</a></li>
-                <li class=""><a class="hover:text-primary transition-colors" href="#">Top Providers</a></li>
-                <li class=""><a class="hover:text-primary transition-colors" href="#">Inspiration</a></li>
-            </ul>
-        </div>
-        <div>
-            <h4 class="font-label-lg text-on-surface mb-6 uppercase tracking-wider">Support</h4>
-            <ul class="space-y-4 font-body-md text-sm">
-                <li class=""><a class="hover:text-primary transition-colors" href="#">Help Center</a></li>
-                <li class=""><a class="hover:text-primary transition-colors" href="#">Safety</a></li>
-                <li class=""><a class="hover:text-primary transition-colors" href="#">Contact</a></li>
-            </ul>
-        </div>
-        <div>
-            <h4 class="font-label-lg text-on-surface mb-6 uppercase tracking-wider">Legal</h4>
-            <ul class="space-y-4 font-body-md text-sm">
-                <li class=""><a class="hover:text-primary transition-colors" href="#">Privacy Policy</a></li>
-                <li class=""><a class="hover:text-primary transition-colors" href="#">Terms of Service</a></li>
-                <li class=""><a class="hover:text-primary transition-colors" href="#">Cookie Policy</a></li>
-            </ul>
-        </div>
-    </div>
-    <div class="container mx-auto pt-8 flex flex-col md:row justify-between items-center text-xs opacity-60">
-        <p class="">© 2024 FABI. All rights reserved.</p>
-        <div class="flex gap-6 mt-4 md:mt-0">
-            <a class="hover:text-primary transition-colors" href="#">Instagram</a>
-            <a class="hover:text-primary transition-colors" href="#">LinkedIn</a>
-            <a class="hover:text-primary transition-colors" href="#">Twitter</a>
-        </div>
-    </div>
-</footer>
-<script>
-    // Micro-interactions for the search bar
-    const inputs = document.querySelectorAll('input');
-    inputs.forEach(input => {
-        input.addEventListener('focus', () => {
-            input.parentElement.classList.add('border-primary');
-        });
-        input.addEventListener('blur', () => {
-            input.parentElement.classList.remove('border-primary');
-        });
-    });
 
-    // Simple scroll reveal effect
-    const observerOptions = {
-        threshold: 0.1
-    };
+            <div id="authPromptContainer" class="mt-8 text-gray-500 font-semibold">
+                Sign in to unlock access to our community of professionals.
+            </div>
+        </section>
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('opacity-100', 'translate-y-0');
-                entry.target.classList.remove('opacity-0', 'translate-y-10');
+        <!-- Features -->
+        <section class="py-20 px-4 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+            <div>
+                <span class="material-symbols-outlined text-blue-700 text-5xl mb-4">verified_user</span>
+                <h3 class="text-xl font-bold mb-2">Verified Pros</h3>
+                <p class="text-gray-600">Every photographer is manually vetted for quality.</p>
+            </div>
+            <div>
+                <span class="material-symbols-outlined text-blue-700 text-5xl mb-4">payments</span>
+                <h3 class="text-xl font-bold mb-2">Secure Payments</h3>
+                <p class="text-gray-600">Transparent pricing with 10% protected commission.</p>
+            </div>
+            <div>
+                <span class="material-symbols-outlined text-blue-700 text-5xl mb-4">schedule</span>
+                <h3 class="text-xl font-bold mb-2">Quick Booking</h3>
+                <p class="text-gray-600">Confirm your date and receive email alerts instantly.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Bottom Nav -->
+    <nav class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-100 flex justify-around items-center py-3">
+        <a href="#" class="flex flex-col items-center text-blue-700"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span><span class="text-xs font-bold">Home</span></a>
+        <a id="navExplore" onclick="Android.openExplore()" class="hidden flex flex-col items-center text-gray-400"><span class="material-symbols-outlined">search</span><span class="text-xs">Explore</span></a>
+        <a onclick="Android.openProfile()" class="flex flex-col items-center text-gray-400"><span class="material-symbols-outlined">person</span><span class="text-xs">Profile</span></a>
+    </nav>
+
+    <script>
+        let currentUserId = "";
+
+    function updateAuthUI(isLoggedIn, userId) {
+            currentUserId = userId || "";
+            const exploreContainer = document.getElementById('exploreContainer');
+            const authPromptContainer = document.getElementById('authPromptContainer');
+            const navExplore = document.getElementById('navExplore');
+            const guestHeader = document.getElementById('guestHeaderActions');
+            const userHeader = document.getElementById('userHeaderActions');
+            const heroJoin = document.getElementById('heroJoinBtn');
+
+            if (isLoggedIn) {
+                exploreContainer.classList.remove('hidden');
+                authPromptContainer.classList.add('hidden');
+                navExplore.classList.remove('hidden');
+                guestHeader.classList.add('hidden');
+                userHeader.classList.remove('hidden');
+                heroJoin.classList.add('hidden');
+            } else {
+                exploreContainer.classList.add('hidden');
+                authPromptContainer.classList.remove('hidden');
+                navExplore.classList.add('hidden');
+                guestHeader.classList.remove('hidden');
+                userHeader.classList.add('hidden');
+                heroJoin.classList.remove('hidden');
             }
-        });
-    }, observerOptions);
-
-    document.querySelectorAll('section').forEach(section => {
-        section.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-10');
-        observer.observe(section);
-    });
-</script>
-
-<script>
-    function updateAuthUI(isLoggedIn) {
-        const exploreContainer = document.getElementById('exploreContainer');
-        const authPromptContainer = document.getElementById('authPromptContainer');
-        const navExplore = document.getElementById('navExplore');
-        const guestHeader = document.getElementById('guestHeaderActions');
-        const userHeader = document.getElementById('userHeaderActions');
-        const heroJoin = document.getElementById('heroJoinBtn');
-
-        if (isLoggedIn) {
-            exploreContainer.classList.remove('hidden');
-            authPromptContainer.classList.add('hidden');
-            navExplore.classList.remove('hidden');
-            guestHeader.classList.add('hidden');
-            userHeader.classList.remove('hidden');
-            heroJoin.classList.add('hidden');
-        } else {
-            exploreContainer.classList.add('hidden');
-            authPromptContainer.classList.remove('hidden');
-            navExplore.classList.add('hidden');
-            guestHeader.classList.remove('hidden');
-            userHeader.classList.add('hidden');
-            heroJoin.classList.remove('hidden');
         }
-    }
-</script>
 
-
-</body></html>
+        // Initial check for native bridge
+        window.onload = () => {
+            if (typeof Android === 'undefined') {
+                console.log("Waiting for bridge...");
+            }
+        };
+    </script>
+</body>
+</html>

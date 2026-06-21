@@ -7,4 +7,11 @@
         <item>Event Planning</item>
         <item>Catering</item>
     </string-array>
+    <string-array name="roles_array">
+        <item>Client (Looking to book)</item>
+        <item>Photographer</item>
+        <item>Videographer</item>
+        <item>DJ / Musician</item>
+        <item>Event Planner</item>
+    </string-array>
 </resources>

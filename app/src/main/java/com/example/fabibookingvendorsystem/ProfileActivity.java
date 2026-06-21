@@ -42,12 +42,15 @@ public class ProfileActivity extends AppCompatActivity {
     private void loadUserData() {
         String userId = mAuth.getCurrentUser().getUid();
 
-        // 1. Fetch Name
-        mDatabase.child("users").child(userId).child("name").addListenerForSingleValueEvent(new ValueEventListener() {
+        // 1. Fetch Name and Role
+        mDatabase.child("users").child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
-                    tvGreeting.setText("Hello, " + snapshot.getValue().toString());
+                    User user = snapshot.getValue(User.class);
+                    if (user != null) {
+                        tvGreeting.setText(user.name + " (" + user.role + ")");
+                    }
                 }
             }
             @Override

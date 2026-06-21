@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +16,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class RegisterActivity extends AppCompatActivity {
     private EditText etEmail, etPassword, etFullName;
+    private Spinner spinnerRole;
     private Button btnRegister;
     private TextView tvLoginLink;
     private FirebaseAuth mAuth;
@@ -31,6 +33,7 @@ public class RegisterActivity extends AppCompatActivity {
         etFullName = findViewById(R.id.etFullName);
         etEmail = findViewById(R.id.etEmail);
         etPassword = findViewById(R.id.etPassword);
+        spinnerRole = findViewById(R.id.spinnerRole);
         btnRegister = findViewById(R.id.btnRegister);
         tvLoginLink = findViewById(R.id.tvLoginLink);
 
@@ -53,6 +56,7 @@ public class RegisterActivity extends AppCompatActivity {
         String name = etFullName.getText().toString().trim();
         String email = etEmail.getText().toString().trim();
         String password = etPassword.getText().toString().trim();
+        String role = spinnerRole.getSelectedItem().toString();
 
         if (TextUtils.isEmpty(name)) {
             Toast.makeText(this, "Enter name", Toast.LENGTH_SHORT).show();
@@ -63,14 +67,17 @@ public class RegisterActivity extends AppCompatActivity {
             Toast.makeText(this, "Enter email", Toast.LENGTH_SHORT).show();
             return;
         }
-        
-        // ... (rest of validation)
+
+        if (TextUtils.isEmpty(password)) {
+            Toast.makeText(this, "Enter password", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
                         String userId = mAuth.getCurrentUser().getUid();
-                        User user = new User(email, userId, name);
+                        User user = new User(email, userId, name, role);
                         
                         mDatabase.child("users").child(userId).setValue(user)
                             .addOnCompleteListener(dbTask -> {

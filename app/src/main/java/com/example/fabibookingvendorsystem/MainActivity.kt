@@ -24,6 +24,10 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
+
 class MainActivity : AppCompatActivity() {
     private lateinit var webView: WebView
     private lateinit var mDatabase: DatabaseReference
@@ -45,6 +49,9 @@ class MainActivity : AppCompatActivity() {
                 super.onPageFinished(view, url)
                 updateAuthUI()
                 checkInitialNetwork()
+                if (url != null && url.contains("explore.html")) {
+                    loadRealListings()
+                }
             }
         }
         webView.webChromeClient = WebChromeClient()
@@ -102,12 +109,29 @@ class MainActivity : AppCompatActivity() {
             }
 
             @JavascriptInterface
+            fun fetchListings() {
+                loadRealListings()
+            }
+
+            @JavascriptInterface
             fun fetchWeather() {
                 if (isNetworkAvailable()) {
                     getNairobiWeather()
                 } else {
                     Toast.makeText(this@MainActivity, "No Internet Connection", Toast.LENGTH_SHORT).show()
                 }
+            }
+
+            @JavascriptInterface
+            fun deleteListing(listingId: String) {
+                mDatabase.child("listings").child(listingId).removeValue()
+                    .addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            Toast.makeText(this@MainActivity, "Listing deleted successfully", Toast.LENGTH_SHORT).show()
+                        } else {
+                            Toast.makeText(this@MainActivity, "Delete failed: " + task.exception?.message, Toast.LENGTH_LONG).show()
+                        }
+                    }
             }
 
             @JavascriptInterface
@@ -176,9 +200,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateAuthUI() {
-        val isLoggedIn = FirebaseAuth.getInstance().currentUser != null
+        val user = FirebaseAuth.getInstance().currentUser
+        val isLoggedIn = user != null
+        val userId = user?.uid ?: ""
         webView.post {
-            webView.loadUrl("javascript:updateAuthUI($isLoggedIn)")
+            webView.loadUrl("javascript:updateAuthUI($isLoggedIn, '$userId')")
         }
     }
 
@@ -199,6 +225,33 @@ class MainActivity : AppCompatActivity() {
         } else {
             webView.loadUrl("javascript:showNetworkStatus(true)")
         }
+    }
+
+    private fun loadRealListings() {
+        mDatabase.child("listings").addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val listings = mutableListOf<Listing>()
+                for (data in snapshot.children) {
+                    try {
+                        val listing = data.getValue(Listing::class.java)
+                        if (listing != null) {
+                            listings.add(listing)
+                        }
+                    } catch (e: Exception) {
+                        Log.e("FABI_ERROR", "Error parsing listing: ${e.message}")
+                    }
+                }
+                Log.d("FABI_DEBUG", "Found ${listings.size} real listings in DB")
+                val json = Gson().toJson(listings)
+                webView.post {
+                    webView.evaluateJavascript("displayRealListings($json)", null)
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.e("FABI_ERROR", "DB Error: ${error.message}")
+            }
+        })
     }
 
     private fun testNetworkCall() {
