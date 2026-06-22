@@ -23,7 +23,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 
 public class AddListingActivity extends AppCompatActivity {
-    private EditText etName, etPrice, etLocation, etDescription;
+    private EditText etName, etPrice, etLocation, etDescription, etPhoneNumber;
     private Spinner spinnerCategory;
     private ImageView ivSelectedImage;
     private Button btnSelectImage, btnSubmit;
@@ -54,6 +54,7 @@ public class AddListingActivity extends AppCompatActivity {
         etPrice = findViewById(R.id.etPrice);
         etLocation = findViewById(R.id.etLocation);
         etDescription = findViewById(R.id.etDescription);
+        etPhoneNumber = findViewById(R.id.etPhoneNumber);
         spinnerCategory = findViewById(R.id.spinnerCategory);
         ivSelectedImage = findViewById(R.id.ivSelectedImage);
         btnSelectImage = findViewById(R.id.btnSelectImage);
@@ -68,10 +69,11 @@ public class AddListingActivity extends AppCompatActivity {
         String price = etPrice.getText().toString().trim();
         String location = etLocation.getText().toString().trim();
         String description = etDescription.getText().toString().trim();
+        String phone = etPhoneNumber.getText().toString().trim();
         String category = spinnerCategory.getSelectedItem().toString();
 
-        if (TextUtils.isEmpty(name) || TextUtils.isEmpty(price) || TextUtils.isEmpty(location)) {
-            Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show();
+        if (TextUtils.isEmpty(name) || TextUtils.isEmpty(price) || TextUtils.isEmpty(location) || TextUtils.isEmpty(phone)) {
+            Toast.makeText(this, "Please fill all required fields", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -87,7 +89,7 @@ public class AddListingActivity extends AppCompatActivity {
             imageString = uriToBase64(imageUri);
         }
 
-        Listing listing = new Listing(listingId, userId, name, category, description, price, location, imageString);
+        Listing listing = new Listing(listingId, userId, name, category, description, price, location, phone, imageString);
 
         if (listingId != null) {
             mDatabase.child("listings").child(listingId).setValue(listing)

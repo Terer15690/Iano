@@ -36,6 +36,7 @@
                 <button onclick="Android.openRegister()" class="bg-blue-700 text-white px-5 py-2 rounded-full font-bold text-sm shadow-md">Join Now</button>
             </div>
             <div id="userHeaderActions" class="hidden flex items-center gap-2">
+                <span id="headerUserName" class="text-sm font-bold text-black mr-2"></span>
                 <button onclick="Android.openProfile()" class="material-symbols-outlined text-black text-3xl">account_circle</button>
             </div>
         </div>
@@ -93,17 +94,21 @@
 
     <script>
         let currentUserId = "";
+    let currentUserRole = "";
 
-    function updateAuthUI(isLoggedIn, userId) {
+    function updateAuthUI(isLoggedIn, userId, name, role) {
             currentUserId = userId || "";
+            currentUserRole = role || "";
             const exploreContainer = document.getElementById('exploreContainer');
             const authPromptContainer = document.getElementById('authPromptContainer');
             const navExplore = document.getElementById('navExplore');
             const guestHeader = document.getElementById('guestHeaderActions');
             const userHeader = document.getElementById('userHeaderActions');
             const heroJoin = document.getElementById('heroJoinBtn');
+            const headerName = document.getElementById('headerUserName');
 
             if (isLoggedIn) {
+                if (headerName) headerName.innerText = name;
                 exploreContainer.classList.remove('hidden');
                 authPromptContainer.classList.add('hidden');
                 navExplore.classList.remove('hidden');

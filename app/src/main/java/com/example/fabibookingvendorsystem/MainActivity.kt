@@ -128,6 +128,8 @@ class MainActivity : AppCompatActivity() {
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
                             Toast.makeText(this@MainActivity, "Listing deleted successfully", Toast.LENGTH_SHORT).show()
+                            // Force immediate refresh of listings
+                            loadRealListings()
                         } else {
                             Toast.makeText(this@MainActivity, "Delete failed: " + task.exception?.message, Toast.LENGTH_LONG).show()
                         }
@@ -135,10 +137,11 @@ class MainActivity : AppCompatActivity() {
             }
 
             @JavascriptInterface
-            fun sendBookingEmail(photographer: String, amount: String, location: String, date: String) {
+            fun sendBookingEmail(photographer: String, amount: String, location: String, date: String, phone: String) {
                 val user = FirebaseAuth.getInstance().currentUser
                 val email = user?.email ?: ""
                 val userId = user?.uid ?: "Anonymous"
+                val devEmail = "ianterer06@gmail.com" // Assuming this is your developer email
                 
                 val timestamp = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(Date())
                 
@@ -163,7 +166,7 @@ class MainActivity : AppCompatActivity() {
                 // 2. Send Email
                 val intent = Intent(Intent.ACTION_SEND)
                 intent.type = "message/rfc822"
-                intent.putExtra(Intent.EXTRA_EMAIL, arrayOf(email))
+                intent.putExtra(Intent.EXTRA_EMAIL, arrayOf(email, devEmail))
                 intent.putExtra(Intent.EXTRA_SUBJECT, "Booking Confirmation: $photographer")
                 
                 val message = """
@@ -173,6 +176,7 @@ class MainActivity : AppCompatActivity() {
                     
                     Details:
                     Photographer: $photographer
+                    Phone: $phone
                     Amount: $amount
                     Location: $location
                     Date/Time: $date
@@ -182,10 +186,15 @@ class MainActivity : AppCompatActivity() {
                 
                 intent.putExtra(Intent.EXTRA_TEXT, message)
                 
-                try {
-                    startActivity(Intent.createChooser(intent, "Send Confirmation Email..."))
-                } catch (e: Exception) {
-                    Toast.makeText(this@MainActivity, "Email client not found", Toast.LENGTH_SHORT).show()
+                webView.post {
+                    try {
+                        val chooser = Intent.createChooser(intent, "Send Booking Confirmation")
+                        chooser.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        startActivity(chooser)
+                        Toast.makeText(this@MainActivity, "Please tap SEND in your email app to notify the vendor", Toast.LENGTH_LONG).show()
+                    } catch (e: Exception) {
+                        Toast.makeText(this@MainActivity, "Email client not found", Toast.LENGTH_SHORT).show()
+                    }
                 }
             }
         }, "Android")
@@ -203,8 +212,26 @@ class MainActivity : AppCompatActivity() {
         val user = FirebaseAuth.getInstance().currentUser
         val isLoggedIn = user != null
         val userId = user?.uid ?: ""
-        webView.post {
-            webView.loadUrl("javascript:updateAuthUI($isLoggedIn, '$userId')")
+
+        if (isLoggedIn) {
+            mDatabase.child("users").child(userId).addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    // Fetching values directly from snapshot for maximum reliability
+                    val name = snapshot.child("name").value?.toString() ?: "User"
+                    val role = snapshot.child("role").value?.toString() ?: "Client"
+                    
+                    Log.d("FABI_DEBUG", "Fetched for Header: Name=$name, Role=$role")
+
+                    webView.post {
+                        webView.loadUrl("javascript:updateAuthUI(true, '$userId', '$name', '$role')")
+                    }
+                }
+                override fun onCancelled(error: DatabaseError) {}
+            })
+        } else {
+            webView.post {
+                webView.loadUrl("javascript:updateAuthUI(false, '', '', '')")
+            }
         }
     }
 

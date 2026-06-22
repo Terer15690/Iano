@@ -47,10 +47,9 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
-                    User user = snapshot.getValue(User.class);
-                    if (user != null) {
-                        tvGreeting.setText(user.name + " (" + user.role + ")");
-                    }
+                    String name = snapshot.child("name").getValue() != null ? snapshot.child("name").getValue().toString() : "User";
+                    String role = snapshot.child("role").getValue() != null ? snapshot.child("role").getValue().toString() : "Client";
+                    tvGreeting.setText(name + " (" + role + ")");
                 }
             }
             @Override

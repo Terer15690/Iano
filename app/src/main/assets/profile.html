@@ -247,11 +247,12 @@
         const photographer = "Maina Kamau";
         const amount = "KSh 15,000";
         const location = "Nairobi, Kenya";
+        const phone = "0712345678"; // Added sample phone
         const date = new Date().toLocaleString(); // Current date and time
 
         // Call the Android Bridge
         if (typeof Android !== 'undefined') {
-            Android.sendBookingEmail(photographer, amount, location, date);
+            Android.sendBookingEmail(photographer, amount, location, date, phone);
         }
 
         // Navigate to confirmation page

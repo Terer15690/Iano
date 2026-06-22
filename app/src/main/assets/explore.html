@@ -37,6 +37,7 @@
             <h1 class="text-xl font-bold text-blue-700">FABI</h1>
         </a>
         <div class="flex items-center gap-2">
+            <span id="headerUserName" class="text-sm font-bold text-black mr-2"></span>
             <button onclick="Android.openProfile()" class="material-symbols-outlined text-black">account_circle</button>
         </div>
     </header>
@@ -76,6 +77,7 @@
 
     <script>
         let currentUserId = "";
+    let currentUserRole = "";
 
     window.onload = () => {
         if (typeof Android !== 'undefined') {
@@ -83,9 +85,12 @@
         }
     };
 
-    function updateAuthUI(isLoggedIn, userId) {
+    function updateAuthUI(isLoggedIn, userId, name, role) {
         currentUserId = userId || "";
-        console.log("Explore: Current User ID is " + currentUserId);
+        currentUserRole = role || "";
+        const headerName = document.getElementById('headerUserName');
+        if (headerName) headerName.innerText = name;
+        console.log("Explore: User=" + name + ", Role=" + currentUserRole);
     }
 
     function displayRealListings(listings) {
@@ -103,9 +108,12 @@
             div.className = "bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100 relative";
             const imageSrc = item.imageBase64 ? `data:image/jpeg;base64,${item.imageBase64}` : 'https://via.placeholder.com/400x300?text=FABI+Pro';
 
-            // Show delete button ONLY if this user created this listing
+            // Show delete button ONLY if owner AND has specific role
+            const allowedRoles = ["Photographer", "Videographer", "DJ / Musician", "Event Planner"];
+            const hasPermission = allowedRoles.includes(currentUserRole);
             const isOwner = item.userId === currentUserId;
-            const deleteBtn = isOwner ? `
+
+            const deleteBtn = (isOwner && hasPermission) ? `
                 <button onclick="deleteListing('${item.listingId}')" class="absolute top-3 right-3 bg-red-600 text-white w-10 h-10 rounded-full shadow-lg flex items-center justify-center hover:bg-red-700 active:scale-90 transition-all z-20">
                     <span class="material-symbols-outlined text-sm">delete</span>
                 </button>
@@ -121,9 +129,10 @@
                         <h3 class="font-bold text-lg text-black">${item.name}</h3>
                         <span class="text-blue-700 font-bold">${item.price}</span>
                     </div>
-                    <p class="text-gray-500 text-sm mb-3">${item.location} • ${item.category}</p>
+                    <p class="text-gray-500 text-sm mb-1">${item.location} • ${item.category}</p>
+                    <p class="text-blue-600 text-xs font-bold mb-3">📞 ${item.phoneNumber || 'N/A'}</p>
                     <p class="text-gray-700 text-sm line-clamp-2 mb-4">${item.description}</p>
-                    <button onclick="bookVendor('${item.name}', '${item.price}', '${item.location}')" class="w-full py-2.5 bg-blue-700 text-white rounded-lg font-bold hover:bg-blue-800 transition-all">Book Now</button>
+                    <button onclick="bookVendor('${item.name}', '${item.price}', '${item.location}', '${item.phoneNumber}')" class="w-full py-2.5 bg-blue-700 text-white rounded-lg font-bold hover:bg-blue-800 transition-all">Book Now</button>
                 </div>
             `;
             container.appendChild(div);
@@ -138,13 +147,19 @@
         }
     }
 
-        function bookVendor(name, price, location) {
-            if (typeof Android !== 'undefined') {
-                const date = new Date().toLocaleString();
-                Android.sendBookingEmail(name, price, location, date);
-            }
+    function bookVendor(name, price, location, phone) {
+        if (typeof Android !== 'undefined') {
+            const date = new Date().toLocaleString();
+            Android.sendBookingEmail(name, price, location, date, phone);
+
+            // Wait 1 second before navigating to ensure the intent launches
+            setTimeout(() => {
+                window.location.href = "confirmed.html";
+            }, 1000);
+        } else {
             window.location.href = "confirmed.html";
         }
+    }
 
         function updateWeatherUI(temp) {
             const display = document.getElementById('weatherDisplay');
