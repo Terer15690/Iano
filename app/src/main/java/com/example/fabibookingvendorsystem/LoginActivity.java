@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -71,18 +72,27 @@ public class LoginActivity extends AppCompatActivity {
                         String userId = mAuth.getCurrentUser().getUid();
                         String timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(new Date());
 
-                        // 1. Store information in Database (Login History & Last Login)
                         mDatabase.child("users").child(userId).child("lastLogin").setValue(timestamp);
                         mDatabase.child("login_history").child(userId).push().setValue(timestamp);
 
-                        Toast.makeText(LoginActivity.this, "Login Successful & Database Updated", Toast.LENGTH_SHORT).show();
-                        
-                        // 2. Trigger Email Notification (Via Intent)
+                        Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
                         sendLoginEmailNotification(email);
-                        
                         finish();
                     } else {
-                        Toast.makeText(LoginActivity.this, "Login Failed: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                        String message = task.getException() != null ? task.getException().getMessage() : "Unknown Error";
+                        if (message != null && message.contains("no user record")) {
+                            new AlertDialog.Builder(this)
+                                .setTitle("Account Not Found")
+                                .setMessage("No account found with this email. Would you like to create one?")
+                                .setPositiveButton("Register", (dialog, which) -> {
+                                    startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+                                    finish();
+                                })
+                                .setNegativeButton("Cancel", null)
+                                .show();
+                        } else {
+                            Toast.makeText(LoginActivity.this, "Login Failed: " + message, Toast.LENGTH_LONG).show();
+                        }
                     }
                 });
     }

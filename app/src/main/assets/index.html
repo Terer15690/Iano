@@ -37,7 +37,9 @@
             </div>
             <div id="userHeaderActions" class="hidden flex items-center gap-2">
                 <span id="headerUserName" class="text-sm font-bold text-black mr-2"></span>
-                <button onclick="Android.openProfile()" class="material-symbols-outlined text-black text-3xl">account_circle</button>
+                <div class="w-10 h-10 rounded-full overflow-hidden border border-gray-200" onclick="Android.openProfile()">
+                    <img id="headerUserImage" src="https://via.placeholder.com/40" class="w-full h-full object-cover">
+                </div>
             </div>
         </div>
     </header>
@@ -95,10 +97,21 @@
     <script>
         let currentUserId = "";
     let currentUserRole = "";
+    let isMasterDeveloper = false;
 
-    function updateAuthUI(isLoggedIn, userId, name, role) {
+    // Log button clicks to Android EventManager
+    document.addEventListener('click', (e) => {
+        if (e.target.tagName === 'BUTTON' || e.target.tagName === 'A') {
+            if (typeof Android !== 'undefined') {
+                Android.logInteraction('Clicked ' + (e.target.innerText || e.target.getAttribute('data-icon') || 'Link'));
+            }
+        }
+    });
+
+    function updateAuthUI(isLoggedIn, userId, name, role, profilePic, isDev) {
             currentUserId = userId || "";
             currentUserRole = role || "";
+            isMasterDeveloper = isDev || false;
             const exploreContainer = document.getElementById('exploreContainer');
             const authPromptContainer = document.getElementById('authPromptContainer');
             const navExplore = document.getElementById('navExplore');
@@ -106,9 +119,13 @@
             const userHeader = document.getElementById('userHeaderActions');
             const heroJoin = document.getElementById('heroJoinBtn');
             const headerName = document.getElementById('headerUserName');
+            const headerImage = document.getElementById('headerUserImage');
 
             if (isLoggedIn) {
                 if (headerName) headerName.innerText = name;
+                if (headerImage && profilePic) {
+                    headerImage.src = 'data:image/jpeg;base64,' + profilePic;
+                }
                 exploreContainer.classList.remove('hidden');
                 authPromptContainer.classList.add('hidden');
                 navExplore.classList.remove('hidden');

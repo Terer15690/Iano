@@ -1,6 +1,8 @@
 package com.example.fabibookingvendorsystem;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -16,6 +18,10 @@ import android.widget.Toast;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -26,10 +32,14 @@ public class AddListingActivity extends AppCompatActivity {
     private EditText etName, etPrice, etLocation, etDescription, etPhoneNumber;
     private Spinner spinnerCategory;
     private ImageView ivSelectedImage;
-    private Button btnSelectImage, btnSubmit;
+    private Button btnSelectImage, btnSubmit, btnGetLocation;
     private Uri imageUri;
     private DatabaseReference mDatabase;
     private FirebaseAuth mAuth;
+    private FusedLocationProviderClient fusedLocationClient;
+
+    private double listingLat = 0.0;
+    private double listingLon = 0.0;
 
     private final ActivityResultLauncher<String> mGetContent = registerForActivityResult(
             new ActivityResultContracts.GetContent(),
@@ -42,6 +52,19 @@ public class AddListingActivity extends AppCompatActivity {
             }
     );
 
+    private final ActivityResultLauncher<String[]> locationPermissionLauncher = registerForActivityResult(
+            new ActivityResultContracts.RequestMultiplePermissions(),
+            result -> {
+                Boolean fineLocationGranted = result.getOrDefault(Manifest.permission.ACCESS_FINE_LOCATION, false);
+                Boolean coarseLocationGranted = result.getOrDefault(Manifest.permission.ACCESS_COARSE_LOCATION, false);
+                if ((fineLocationGranted != null && fineLocationGranted) || (coarseLocationGranted != null && coarseLocationGranted)) {
+                    fetchLocation();
+                } else {
+                    Toast.makeText(this, "Location permission denied", Toast.LENGTH_SHORT).show();
+                }
+            }
+    );
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +72,7 @@ public class AddListingActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
         etName = findViewById(R.id.etServiceName);
         etPrice = findViewById(R.id.etPrice);
@@ -59,9 +83,34 @@ public class AddListingActivity extends AppCompatActivity {
         ivSelectedImage = findViewById(R.id.ivSelectedImage);
         btnSelectImage = findViewById(R.id.btnSelectImage);
         btnSubmit = findViewById(R.id.btnSubmitListing);
+        btnGetLocation = findViewById(R.id.btnGetListingLocation);
 
         btnSelectImage.setOnClickListener(v -> mGetContent.launch("image/*"));
+        btnGetLocation.setOnClickListener(v -> requestLocationPermission());
         btnSubmit.setOnClickListener(v -> submitListing());
+    }
+
+    private void requestLocationPermission() {
+        locationPermissionLauncher.launch(new String[]{
+                Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+        });
+    }
+
+    private void fetchLocation() {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
+        fusedLocationClient.getLastLocation().addOnSuccessListener(this, location -> {
+            if (location != null) {
+                listingLat = location.getLatitude();
+                listingLon = location.getLongitude();
+                btnGetLocation.setText("Location Pinned!");
+                Toast.makeText(this, "Business GPS Location Captured!", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "Could not detect location. Is GPS on?", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void submitListing() {
@@ -83,13 +132,12 @@ public class AddListingActivity extends AppCompatActivity {
         String userId = mAuth.getCurrentUser() != null ? mAuth.getCurrentUser().getUid() : "Anonymous";
         String listingId = mDatabase.child("listings").push().getKey();
 
-        // Convert image to Base64 String
         String imageString = "";
         if (imageUri != null) {
             imageString = uriToBase64(imageUri);
         }
 
-        Listing listing = new Listing(listingId, userId, name, category, description, price, location, phone, imageString);
+        Listing listing = new Listing(listingId, userId, name, category, description, price, location, phone, imageString, listingLat, listingLon);
 
         if (listingId != null) {
             mDatabase.child("listings").child(listingId).setValue(listing)
@@ -111,7 +159,6 @@ public class AddListingActivity extends AppCompatActivity {
             InputStream inputStream = getContentResolver().openInputStream(uri);
             Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-            // Compress image to keep database size small
             bitmap.compress(Bitmap.CompressFormat.JPEG, 50, outputStream);
             byte[] byteArray = outputStream.toByteArray();
             return Base64.encodeToString(byteArray, Base64.DEFAULT);
